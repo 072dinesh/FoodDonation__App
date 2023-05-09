@@ -98,5 +98,7 @@ dependencies {
 
     // for log
     implementation 'com.jakewharton.timber:timber:5.0.1'
+    //splash  screen
+    implementation("androidx.core:core-splashscreen:1.0.0")
 
 }
