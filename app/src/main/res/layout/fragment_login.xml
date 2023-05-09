@@ -10,19 +10,16 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/cherry_swash_bold"
         android:gravity="center"
         android:text="Login"
         android:textColor="#301934"
-        android:textSize="30dp"
+        android:textSize="25dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/cardView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/imageView">
 
     </TextView>
@@ -32,14 +29,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="50dp"
         app:cardBackgroundColor="#F4F6FE"
         app:cardCornerRadius="30dp"
         app:cardElevation="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/textView">
 
 
         <androidx.core.widget.NestedScrollView
@@ -59,28 +56,25 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="15dp"
-                    android:hint="Enter password"
-                    app:boxStrokeColor="@color/purple_700"
-                    app:endIconMode="password_toggle"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:hint="Enter email"
+                    app:boxStrokeColor="@color/purple_1"
+                    app:endIconMode="clear_text"
                     app:hintAnimationEnabled="true"
-                    app:hintTextColor="@color/purple_700"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:layout_editor_absoluteX="15dp">
+                    app:hintTextColor="@color/purple_1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                    <EditText
-                        android:id="@+id/editTexts"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/username"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="30dp"
-                        android:layout_marginEnd="10dp"
-                        android:text="Enter the name"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
+                        android:inputType="text"
+                        android:textColor="@color/purple_1"
+                        android:textCursorDrawable="@drawable/cursarcolor" />
 
-                    </EditText>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -90,42 +84,35 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="15dp"
                     android:hint="Enter password"
-                    app:boxStrokeColor="@color/purple_700"
+                    app:boxStrokeColor="@color/purple_1"
                     app:endIconMode="password_toggle"
                     app:hintAnimationEnabled="true"
-                    app:hintTextColor="@color/purple_700"
+                    app:hintTextColor="@color/purple_1"
                     app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
                     app:layout_constraintStart_toStartOf="@+id/textInputLayout"
                     app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
 
-                    <EditText
-                        android:id="@+id/editText"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="30dp"
-                        android:layout_marginEnd="10dp"
-                        android:text="Enter the name"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
+                        android:inputType="textPassword"
+                        android:textColor="@color/purple_1"
+                        android:textCursorDrawable="@drawable/cursarcolor" />
 
-                    </EditText>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btncode"
-
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-
-
                     android:layout_marginTop="10dp"
                     android:paddingVertical="17dp"
                     android:text="Continue"
                     android:textAlignment="center"
+                    android:textAllCaps="false"
                     android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:textStyle="bold"
                     app:cornerRadius="30dp"
                     app:layout_constraintEnd_toEndOf="@+id/textInputLayout2"
@@ -144,7 +131,9 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginTop="38dp"
+        android:layout_marginBottom="3dp"
         android:src="@drawable/logofooddonation"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
