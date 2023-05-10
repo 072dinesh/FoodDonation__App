@@ -71,7 +71,7 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/username"
+                        android:id="@+id/edit_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="text"
@@ -106,12 +106,12 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnContinue"
+                    android:id="@+id/btnLogin"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:paddingVertical="17dp"
-                    android:text="Continue"
+                    android:text="Login"
                     android:textAlignment="center"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
