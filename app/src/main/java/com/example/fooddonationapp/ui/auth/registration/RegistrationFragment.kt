@@ -10,7 +10,6 @@ import androidx.navigation.fragment.findNavController
 import com.example.fooddonationapp.R
 import com.example.fooddonationapp.databinding.FragmentRegistrationBinding
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
@@ -30,6 +29,8 @@ class RegistrationFragment : Fragment() {
     lateinit var city : TextView
     lateinit var address : TextView
     lateinit var databaseReference: DatabaseReference
+    lateinit var databaseReferenceDonar: DatabaseReference
+    private var a:String?=null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,13 +38,10 @@ class RegistrationFragment : Fragment() {
     ): View? {
 
         _binding = FragmentRegistrationBinding.inflate(inflater,container,false)
-//        setUpUi()
-        auth= FirebaseAuth.getInstance()
 
-        binding.btncontinue.setOnClickListener {
 
-            singUpUser()
-        }
+
+
         auth= FirebaseAuth.getInstance()
 //        binding.btnAllAccount.setOnClickListener {
 ////            val intent = Intent(this, loginss::class.java)
@@ -55,42 +53,31 @@ class RegistrationFragment : Fragment() {
 //
 //            )
 //        }
-        databaseReference= FirebaseDatabase.getInstance().getReference("NGO")
-//        setOnClicks()
-//        typeSpin = binding.spinner
-//
-//        val typeAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, types)
-//        typeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-//        typeSpin!!.setAdapter(typeAdapter)
+
+        binding.btncontinue.setOnClickListener {
+
+            setOnCheckedChangeListener()
+
+        }
+
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("NGO")
+
+       databaseReferenceDonar = FirebaseDatabase.getInstance().getReference("Donar")
 
         typeSpin = binding.spinner
 
         val typeAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, types)
         typeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         typeSpin!!.setAdapter(typeAdapter)
-
+        spinner()
         return binding.root
 
 
 
     }
 
-//    fun onDataChange(dataSnapshot: DataSnapshot) {
-//        for (areaSnapshot in dataSnapshot.children) {
-//            val areaName = areaSnapshot.child("areaName").getValue(
-//                String::class.java
-//            )
-//            val areaSpinner =binding.spinner
-//            val areas = arrayOf(areaName)
-//            val areasAdapter = ArrayAdapter<String?>(
-//                this@UAdminActivity,
-//                android.R.layout.simple_spinner_item,
-//                areas
-//            )
-//            areasAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-//            areaSpinner.adapter = areasAdapter
-//        }
-//    }
+
 
     private fun spinner(){
         binding.spinner.onItemSelectedListener = object :  AdapterView.OnItemSelectedListener {
@@ -101,6 +88,7 @@ class RegistrationFragment : Fragment() {
                 id: Long
             ) {
 
+                    a=types[position]
 
                 //getString(R.string.selected_item) + " " + "" + types[position],Toast.LENGTH_SHORT).show()
             }
@@ -110,11 +98,82 @@ class RegistrationFragment : Fragment() {
         }
     }
 
+
+
+
+    private fun setOnCheckedChangeListener() {
+
+       var Donar =  binding.materialRadioButton
+
+        if (Donar.isChecked){
+
+            singUpUsers()
+        }
+        else
+        {
+            singUpUser()
+        }
+
+    }
+
+
+
+
+    private fun singUpUsers()
+    {
+
+
+
+        var email = binding.editEmail.text.toString()
+        var password=binding.editPassword.text.toString()
+
+
+        if (email.isBlank()||password.isBlank())
+        {
+            Toast.makeText(requireContext(), "Email and Password Can't be blank", Toast.LENGTH_LONG).show()
+            return
+
+        }
+//        if (password != passconfir)
+//        {
+//            Toast.makeText(requireContext(), "Password and Confirm Password do not match", Toast.LENGTH_LONG).show()
+//            return
+//        }
+
+
+        auth.createUserWithEmailAndPassword(email,password)
+            .addOnCompleteListener(requireActivity()) {
+                if(it.isSuccessful){
+                    Toast.makeText(requireContext(), "Successfully Registered", Toast.LENGTH_LONG).show()
+                    var id=databaseReferenceDonar.push().key.toString()
+                    val add = binding.editAddress.text.toString()
+                    val email= binding.editEmail.text.toString()
+                    val password=binding.editPassword.text.toString()
+                    val city=a
+                    val phoneno = binding.editPhone.text.toString()
+                    val username = binding.username.text.toString()
+                    val fooddata = Donor(id,add,email,password,city.toString(),phoneno,username)
+                    databaseReferenceDonar.child(id).setValue(fooddata)
+                    Toast.makeText(requireContext(),"Record Inserted Successfully", Toast.LENGTH_LONG).show()
+
+                    findNavController().navigate(
+
+                        RegistrationFragmentDirections.actionRegistrationFragmentToLoginFragment()
+
+                    )
+                }else {
+                    Toast.makeText(requireContext(), "Registration Failed", Toast.LENGTH_LONG).show()
+                }
+            }
+
+
+    }
+
+
     private fun singUpUser()
     {
         var email = binding.editEmail.text.toString()
         var password=binding.editPassword.text.toString()
-
 
 
         if (email.isBlank()||password.isBlank())
@@ -138,7 +197,7 @@ class RegistrationFragment : Fragment() {
                     val add = binding.editAddress.text.toString()
                     val email= binding.editEmail.text.toString()
                     val password=binding.editPassword.text.toString()
-                    val city=types.first()
+                    val city=a
                     val phoneno = binding.editPhone.text.toString()
                     val username = binding.username.text.toString()
                     val fooddata = Donor(id,add,email,password,city.toString(),phoneno,username)
