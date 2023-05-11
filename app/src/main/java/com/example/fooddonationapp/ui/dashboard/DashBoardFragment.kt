@@ -28,12 +28,3 @@ class DashBoardFragment : Fragment() {
                 FirebaseAuth.getInstance().signOut()
                 // authss.signOut()
                 findNavController().navigate(DashBoardFragmentDirections.actionDashBoardFragmentToOnBoardingFragment())
-
-
-            }
-
-        return binding.root
-        }
-
-
-}

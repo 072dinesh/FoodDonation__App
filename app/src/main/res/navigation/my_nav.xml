@@ -3,19 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_nav"
-    app:startDestination="@id/ngoDashBoardFragment">
-    <fragment
-        android:id="@+id/dashBoardFragment"
-        android:name="com.example.fooddonationapp.ui.dashboard.DashBoardFragment"
-        android:label="fragment_dash_board"
-        tools:layout="@layout/fragment_dash_board" >
-        <action
-            android:id="@+id/action_dashBoardFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
-        <action
-            android:id="@+id/action_dashBoardFragment_to_onBoardingFragment"
-            app:destination="@id/onBoardingFragment" />
-    </fragment>
+    app:startDestination="@id/onBoardingFragment">
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.fooddonationapp.ui.auth.login.LoginFragment"
@@ -25,8 +13,11 @@
             android:id="@+id/action_loginFragment_to_registrationFragment"
             app:destination="@id/registrationFragment" />
         <action
-            android:id="@+id/action_loginFragment_to_dashBoardFragment"
-            app:destination="@id/dashBoardFragment" />
+            android:id="@+id/action_loginFragment_to_ngoDashBoardFragment"
+            app:destination="@id/ngoDashBoardFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_donorDashBoardFragment"
+            app:destination="@id/donorDashBoardFragment" />
     </fragment>
     <fragment
         android:id="@+id/onBoardingFragment"
@@ -37,8 +28,11 @@
             android:id="@+id/action_onBoardingFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
         <action
-            android:id="@+id/action_onBoardingFragment_to_dashBoardFragment"
-            app:destination="@id/dashBoardFragment" />
+            android:id="@+id/action_onBoardingFragment_to_ngoDashBoardFragment"
+            app:destination="@id/ngoDashBoardFragment" />
+        <action
+            android:id="@+id/action_onBoardingFragment_to_donorDashBoardFragment"
+            app:destination="@id/donorDashBoardFragment" />
     </fragment>
     <fragment
         android:id="@+id/registrationFragment"
@@ -54,5 +48,24 @@
         android:id="@+id/ngoDashBoardFragment"
         android:name="com.example.fooddonationapp.ui.dashboard.ngo.NgoDashBoardFragment"
         android:label="fragment_ngo_dash_board"
-        tools:layout="@layout/fragment_ngo_dash_board" />
+        tools:layout="@layout/fragment_ngo_dash_board" >
+        <action
+            android:id="@+id/action_ngoDashBoardFragment_to_onBoardingFragment"
+            app:destination="@id/onBoardingFragment" />
+        <action
+            android:id="@+id/action_ngoDashBoardFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/donorDashBoardFragment"
+        android:name="com.example.fooddonationapp.ui.dashboard.donor.DonorDashBoardFragment"
+        android:label="fragment_donor_dash_board"
+        tools:layout="@layout/fragment_donor_dash_board" >
+        <action
+            android:id="@+id/action_donorDashBoardFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_donorDashBoardFragment_to_onBoardingFragment"
+            app:destination="@id/onBoardingFragment" />
+    </fragment>
 </navigation>

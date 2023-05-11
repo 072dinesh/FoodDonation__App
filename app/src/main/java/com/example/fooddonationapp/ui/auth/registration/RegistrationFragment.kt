@@ -118,7 +118,6 @@ class RegistrationFragment : Fragment() {
 
 
 
-
     private fun singUpUsers()
     {
 

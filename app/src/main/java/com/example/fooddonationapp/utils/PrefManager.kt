@@ -12,6 +12,8 @@ object PrefManager {
     const val ACCESS_TOKEN = "ACCESS_TOKEN"
     const val FIRE_BASE_TOKEN="FIRE_BASE_TOKEN"
     const val DONT_SHOW_CAP_LIMIT_POPUP = "SHOW_CAP_LIMIT_POPUP"
+    const val LOGIN_NGO ="LOGIN_NGO"
+    const val LOGIN_DONAR="LOGIN_DONAR"
 
     fun init(context: Context) {
         prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
