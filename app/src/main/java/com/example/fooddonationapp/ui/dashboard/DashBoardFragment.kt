@@ -14,6 +14,7 @@ import com.google.firebase.auth.FirebaseAuth
 
 class DashBoardFragment : Fragment() {
     private var _binding : FragmentDashBoardBinding? = null
+
     private val binding get() = _binding!!
 
     override fun onCreateView(

@@ -6,4 +6,6 @@
     <string name="on_boarding_1">You have two hands\none to help yourself,\nthe second to help others.</string>
     <string name="on_boarding_2">When we give cheerfully and accept gracefully\neveryone is blessed.</string>
     <string name="on_boarding_3">Giving is not just about\nmaking a donation, it is about\nmaking a difference.</string>
+    <string name="recent">Recent</string>
+    <string name="history">History</string>
 </resources>
