@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.viewpager2.widget.ViewPager2
 import androidx.navigation.fragment.findNavController
 import com.example.fooddonationapp.R
@@ -51,7 +52,7 @@ private  var _binding : FragmentNgoDashBoardBinding ? = null
             binding.vpNgoDashBoard.currentItem = 1
             binding.btnDashBoardNgoRecentTab.setBackgroundResource(R.drawable.btn_not_press)
             binding.btnDashBoardNgoHistoryTab.setBackgroundResource(R.drawable.btn_press)
-            binding.btnDashBoardNgoHistoryTab.setTextColor(R.color.purple_light)
+            binding.btnDashBoardNgoHistoryTab.setTextColor(ContextCompat.getColor(requireContext(), R.color.purple_light))
             binding.btnDashBoardNgoRecentTab.isSelected = false
 
             //binding.btnDashBoardNgoRecentTab.isPressed = false
@@ -63,7 +64,7 @@ private  var _binding : FragmentNgoDashBoardBinding ? = null
 
             binding.btnDashBoardNgoHistoryTab.setBackgroundResource(R.drawable.btn_not_press)
             binding.btnDashBoardNgoRecentTab.setBackgroundResource(R.drawable.btn_press)
-            binding.btnDashBoardNgoRecentTab.setTextColor(R.color.purple_light)
+            binding.btnDashBoardNgoRecentTab.setTextColor(ContextCompat.getColor(requireContext(), R.color.purple_light))
             binding.btnDashBoardNgoHistoryTab.isSelected = false
           // binding.btnDashBoardNgoHistoryTab.isPressed = false
             //binding.btnDashBoardNgoHistoryTab.background = requireContext().getDrawable()
@@ -78,7 +79,7 @@ private  var _binding : FragmentNgoDashBoardBinding ? = null
                     binding.btnDashBoardNgoHistoryTab.isSelected = false
                     binding.btnDashBoardNgoHistoryTab.setBackgroundResource(R.drawable.btn_not_press)
                     binding.btnDashBoardNgoRecentTab.setBackgroundResource(R.drawable.btn_press)
-                    binding.btnDashBoardNgoHistoryTab.setTextColor(R.color.purple_light)
+                    binding.btnDashBoardNgoHistoryTab.setTextColor(ContextCompat.getColor(requireContext(), R.color.purple_light))
                     //binding.btnDashBoardNgoHistoryTab.setTextAppearance(R.style.Button_Tabs_diasable)
                     //binding.btnDashBoardNgoHistoryTab.isPressed = false
                     //binding.btnDashBoardNgoHistoryTab.background = requireContext().getDrawable(R.drawable.btn_not_press)
@@ -90,7 +91,7 @@ private  var _binding : FragmentNgoDashBoardBinding ? = null
                     binding.btnDashBoardNgoRecentTab.isSelected = false
                     binding.btnDashBoardNgoRecentTab.setBackgroundResource(R.drawable.btn_not_press)
                     binding.btnDashBoardNgoHistoryTab.setBackgroundResource(R.drawable.btn_press)
-                    binding.btnDashBoardNgoRecentTab.setTextColor(R.color.purple_light)
+                    binding.btnDashBoardNgoRecentTab.setTextColor(ContextCompat.getColor(requireContext(), R.color.purple_light))
                    // binding.btnDashBoardNgoRecentTab.setTextAppearance(R.style.Button_Tabs_diasable)
                     //binding.btnDashBoardNgoRecentTab.isPressed = false
                     //binding.btnDashBoardNgoRecentTab.background = requireContext().getDrawable(R.drawable.btn_not_press)
