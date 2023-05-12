@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.example.fooddonationapp.R
 import com.example.fooddonationapp.databinding.FragmentRegistrationBinding
+import com.example.fooddonationapp.model.Donor
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase

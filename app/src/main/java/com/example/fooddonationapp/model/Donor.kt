@@ -1,4 +1,4 @@
-package com.example.fooddonationapp.ui.auth.registration
+package com.example.fooddonationapp.model
 
 
 

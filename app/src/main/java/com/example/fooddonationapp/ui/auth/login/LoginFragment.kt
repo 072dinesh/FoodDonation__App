@@ -7,15 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
-import com.example.fooddonationapp.R
 import com.example.fooddonationapp.databinding.FragmentLoginBinding
-import com.example.fooddonationapp.databinding.FragmentOnBoardingBinding
-import com.example.fooddonationapp.ui.auth.onboarding.OnBoardingFragmentDirections
-import com.example.fooddonationapp.ui.auth.registration.Donor
+import com.example.fooddonationapp.model.Donor
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
-import com.google.firebase.ktx.Firebase
 
 class LoginFragment : Fragment() {
     private var _binding : FragmentLoginBinding? = null
