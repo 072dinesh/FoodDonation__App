@@ -8,6 +8,8 @@
         <item name="postSplashScreenTheme">@style/Theme.FoodDonationApp</item>
 
     </style>
+
+<!--    card style-->
     <style name="MyCardView" parent="@style/Widget.MaterialComponents.CardView">
         <item name="shapeAppearanceOverlay">@style/MyCardViewOverlay</item>
     </style>
@@ -19,6 +21,29 @@
         <item name="cornerSizeBottomRight">30dp</item>
         <item name="cornerSizeBottomLeft">30dp</item>
     </style>
+
+
+    <style name="Card_Form" parent="@style/Widget.MaterialComponents.CardView">
+<!--        <item name="shapeAppearanceOverlay">@style/Card_Form_Overly</item>-->
+        <item name="cornerFamily">rounded</item>
+        <item name="cardCornerRadius">30dp</item>
+        <item name="cardBackgroundColor">@color/purple_light</item>
+        <item name="cardElevation">5dp</item>
+
+    </style>
+    <style name="Text_Field" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="hintTextColor">@color/purple_1</item>
+        <item name="boxStrokeColor">@color/purple_1</item>
+        <item name="hintAnimationEnabled">true</item>
+    </style>
+
+
+
+
+
+
+
+<!--    button style-->
     <style name="Button_Tabs_diasable" parent="TextAppearance.AppCompat">
 
         <item name="android:backgroundTint">@color/purple_light</item>
