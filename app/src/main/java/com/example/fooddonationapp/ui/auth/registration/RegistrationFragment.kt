@@ -70,6 +70,7 @@ class RegistrationFragment : Fragment() {
         val typeAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, types)
         typeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         typeSpin!!.setAdapter(typeAdapter)
+
         spinner()
         return binding.root
 

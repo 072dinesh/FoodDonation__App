@@ -16,8 +16,7 @@ import com.google.firebase.database.*
 import timber.log.Timber
 
 
-class
-OnBoardingFragment : Fragment() {
+class OnBoardingFragment : Fragment() {
 
     private var _binding : FragmentOnBoardingBinding ? = null
     private val binding get() = _binding!!
@@ -36,9 +35,9 @@ OnBoardingFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentOnBoardingBinding.inflate(inflater,container,false)
         auths= FirebaseAuth.getInstance()
+
         databaseReference = FirebaseDatabase.getInstance().getReference("NGO")
         databaseReference2 = FirebaseDatabase.getInstance().getReference("Donor")
-
 
         CheckUserLogin()
         databaseReference.addValueEventListener(object : ValueEventListener {
@@ -47,15 +46,11 @@ OnBoardingFragment : Fragment() {
                     var userdata = data.getValue(Donor::class.java)
                     emailnago = userdata?.email.toString()
                     Timber.e("=====", auths.currentUser?.email.toString())
-
                 }
 
             }
-
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
-
-
             }
         })
         databaseReference2.addValueEventListener(object : ValueEventListener {
@@ -66,13 +61,9 @@ OnBoardingFragment : Fragment() {
                     Timber.e("=====", auths.currentUser?.email.toString())
 
                 }
-
             }
-
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
-
-
             }
         })
 
@@ -83,12 +74,9 @@ OnBoardingFragment : Fragment() {
 
 
     private fun CheckUserLogin() {
-        var listofemployees = ArrayList<Donor>()
-//        Timber.e("=====" + auths.currentUser?.uid)
 
-
-
-        if (auths.currentUser != null) {
+        if (auths.currentUser != null)
+        {
             Timber.e("=====", auths.currentUser?.email.toString())
 
             if (auths.currentUser?.email.toString() == emailnago){
@@ -99,8 +87,6 @@ OnBoardingFragment : Fragment() {
             else if (auths.currentUser?.email.toString() == emaildonor){
                 findNavController().navigate(OnBoardingFragmentDirections.actionOnBoardingFragmentToDonorDashBoardFragment())
             }
-
-
 
         }
         else {

@@ -22,7 +22,7 @@
         android:fontFamily="@font/cherry_swash_bold"
         android:gravity="center"
         android:text="Registration"
-        android:textColor="#301934"
+        android:textColor="@color/purple_black"
         android:textSize="25dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -138,6 +138,7 @@
                 android:hint="Enter phone "
                 app:boxStrokeColor="@color/purple_1"
                 app:endIconMode="clear_text"
+
                 app:hintAnimationEnabled="true"
                 app:hintTextColor="@color/purple_1"
                 app:layout_constraintEnd_toEndOf="@+id/textInputLayout3"
@@ -149,6 +150,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
+
                     android:textColor="@color/purple_1"
                     android:textCursorDrawable="@drawable/cursarcolor" />
 
@@ -174,9 +176,10 @@
                     android:id="@+id/edit_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="clip_vertical"
-                    android:inputType="text"
-                    android:padding="40dp"
+
+                    android:inputType="text|textMultiLine"
+                    android:gravity="top"
+
                     android:textColor="@color/purple_1"
                     android:textCursorDrawable="@drawable/cursarcolor" />
 
@@ -204,17 +207,12 @@
             <RadioGroup
                 android:id="@+id/radioGroup"
                 android:layout_width="0dp"
+                android:layout_alignParentStart="true"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
-
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
-
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
 
                 <com.google.android.material.radiobutton.MaterialRadioButton
                     android:id="@+id/RadioButtonNGO"
@@ -222,13 +220,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="10dp"
+                    android:buttonTint="@color/purple_black"
                     android:text="NGO"
-
-                    app:layout_constraintEnd_toStartOf="@+id/materialRadioButton"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintHorizontal_chainStyle="packed"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintEnd_toStartOf="@+id/materialRadioButton">
 
                 </com.google.android.material.radiobutton.MaterialRadioButton>
 
@@ -236,17 +230,13 @@
                     android:id="@+id/materialRadioButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="15dp"
                     android:text="Donar"
-
-                    app:layout_constraintBottom_toBottomOf="@+id/RadioButtonNGO"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/RadioButtonNGO"
-                    app:layout_constraintTop_toTopOf="@+id/RadioButtonNGO">
+                    android:buttonTint="@color/purple_black"
+                    app:layout_constraintBottom_toBottomOf="@+id/RadioButtonNGO">
 
                 </com.google.android.material.radiobutton.MaterialRadioButton>
-</androidx.constraintlayout.widget.ConstraintLayout>
+
             </RadioGroup>
 
             <!--                <ImageView-->
@@ -261,14 +251,29 @@
 
             <!--                </ImageView>-->
 
-            <Spinner
+
+            <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
                 android:id="@+id/spinner"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                style="@style/Widget.AppCompat.Spinner.DropDown"
+
+                android:layout_marginTop="15dp"
                 app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
                 app:layout_constraintStart_toStartOf="@+id/textInputLayout"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
+                app:smsp_floatingLabelColor="@color/purple_black"
+                app:smsp_outlinedBoxColor="@color/purple_black"
+                app:smsp_floatingLabelText="select city"
+                app:smsp_hint="Select city"
+                app:smsp_hintColor="@color/purple_black"
+                app:smsp_itemColor="#512DA8"
+                app:smsp_itemListColor="#7C4DFF"
+                app:smsp_itemListHintBackgroundColor="#808080"
+                app:smsp_itemListHintColor="#FFFFFF"
+                app:smsp_multilineError="false"
+                app:smsp_selectedItemListColor="#5297FF" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
