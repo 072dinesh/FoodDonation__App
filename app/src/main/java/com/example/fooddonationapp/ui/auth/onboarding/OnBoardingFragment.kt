@@ -1,6 +1,5 @@
 package com.example.fooddonationapp.ui.auth.onboarding
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,20 +8,16 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
-import com.example.fooddonationapp.R
 import com.example.fooddonationapp.databinding.FragmentOnBoardingBinding
-import com.example.fooddonationapp.ui.auth.login.LoginFragmentDirections
-import com.example.fooddonationapp.ui.auth.registration.Donor
-import com.example.fooddonationapp.utils.Constant
-import com.example.fooddonationapp.utils.PrefManager
+import com.example.fooddonationapp.model.Donor
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import com.google.firebase.ktx.Firebase
 import timber.log.Timber
 
 
-class OnBoardingFragment : Fragment() {
+class
+OnBoardingFragment : Fragment() {
 
     private var _binding : FragmentOnBoardingBinding ? = null
     private val binding get() = _binding!!
