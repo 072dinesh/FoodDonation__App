@@ -12,6 +12,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.example.fooddonationapp.R
 import com.example.fooddonationapp.databinding.FragmentDonorDashBoardBinding
+import com.example.fooddonationapp.model.Donor
+import com.example.fooddonationapp.utils.PrefManager
 import com.google.firebase.auth.FirebaseAuth
 
 
@@ -84,6 +86,8 @@ class DonorDashBoardFragment : Fragment() {
     private fun setonclick(){
         binding.tvDashBoardDonorLogout.setOnClickListener {
             auth.signOut()
+            PrefManager.clearAll()
+
             findNavController().navigate(DonorDashBoardFragmentDirections.actionDonorDashBoardFragmentToOnBoardingFragment())
         }
     }

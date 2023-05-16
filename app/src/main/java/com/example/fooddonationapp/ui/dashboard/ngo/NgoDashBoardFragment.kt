@@ -19,6 +19,7 @@ import androidx.viewpager2.widget.ViewPager2
 import androidx.navigation.fragment.findNavController
 import com.example.fooddonationapp.R
 import com.example.fooddonationapp.databinding.FragmentNgoDashBoardBinding
+import com.example.fooddonationapp.utils.PrefManager
 import com.example.fooddonationapp.ui.tabs.ngo.recent.requsetform.RequestFormFragment
 import com.example.fooddonationapp.utils.Constant
 import com.google.android.material.tabs.TabLayoutMediator
@@ -31,7 +32,7 @@ class NgoDashBoardFragment : Fragment() {
 private  var _binding : FragmentNgoDashBoardBinding ? = null
     private val binding get() = _binding!!
     private lateinit var navController: NavController
-    //val form = RequestFormFragment()
+
 
     private val tabTitle = arrayListOf("Recent","History")
     lateinit var auth: FirebaseAuth
@@ -155,6 +156,7 @@ private  var _binding : FragmentNgoDashBoardBinding ? = null
     private fun setonclick(){
         binding.ivDashBoardNgoLogOut.setOnClickListener {
              auth.signOut()
+            PrefManager.clearAll()
             findNavController().navigate(NgoDashBoardFragmentDirections.actionNgoDashBoardFragmentToOnBoardingFragment())
 
 

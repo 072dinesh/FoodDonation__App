@@ -47,13 +47,14 @@ object PrefManager {
         return prefs.getBoolean(key, default)
     }
 
+
+
     fun removeValue(key: String?) {
         with(editor) {
             remove(key)
             commit()
         }
     }
-
 //    fun saveHashMap(key: String?, obj: Any?) {
 //        val editor = prefs.edit()
 //        val gson = Gson()

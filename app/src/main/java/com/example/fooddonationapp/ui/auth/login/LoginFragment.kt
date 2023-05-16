@@ -1,6 +1,9 @@
 package com.example.fooddonationapp.ui.auth.login
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,18 +12,23 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.fooddonationapp.databinding.FragmentLoginBinding
 import com.example.fooddonationapp.model.Donor
+import com.example.fooddonationapp.utils.PrefManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import com.google.firebase.firestore.FirebaseFirestore
 
 class LoginFragment : Fragment() {
     private var _binding : FragmentLoginBinding? = null
     private val binding get() = _binding!!
 
     lateinit var auth: FirebaseAuth
-    lateinit var databaseReference: DatabaseReference
-    lateinit var databaseReference2: DatabaseReference
+
     lateinit var emailnago : String
     lateinit var emaildonor: String
+
+    private lateinit var dbNgo : FirebaseFirestore
+    private lateinit var dbDonar : FirebaseFirestore
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,39 +47,15 @@ class LoginFragment : Fragment() {
         binding.signup.setOnClickListener {
             findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToRegistrationFragment())
         }
-        databaseReference = FirebaseDatabase.getInstance().getReference("NGO")
-        databaseReference2 = FirebaseDatabase.getInstance().getReference("Donor")
+        dbNgo = FirebaseFirestore.getInstance()
+        dbDonar = FirebaseFirestore.getInstance()
 
-        databaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                for (data in snapshot.children) {
-                    var userdata = data.getValue(Donor::class.java)
-                    emailnago = userdata?.email.toString()
 
-                }
-            }
 
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
+//        databaseReference = FirebaseDatabase.getInstance().getReference("NGO")
+//        databaseReference2 = FirebaseDatabase.getInstance().getReference("Donor")
 
-        })
-        databaseReference2.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                for (data in snapshot.children) {
-                    var userdata = data.getValue(Donor::class.java)
-                    emaildonor = userdata?.email.toString()
 
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-
-        })
-//        setUpUi()
-//        setOnClicks()
         return binding.root
     }
     private fun login() {
@@ -85,23 +69,7 @@ class LoginFragment : Fragment() {
             return
 
         }
-//
-//        private fun CheckUserLogin(){
-//            if (auth.currentUser != null) {
-//
-//                Toast.makeText(requireContext(), "user is already login!", Toast.LENGTH_LONG).show()
-//
-//                findNavController().navigate(OnBoardingFragmentDirections.actionOnBoardingFragmentToDashBoardFragment())
-//
-//
-//            } else {
-//
-//
-//                setUpUi()
-//                setOnClicks()
-//
-//            }
-//        }
+
 
 
         auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(requireActivity()) {
@@ -109,31 +77,45 @@ class LoginFragment : Fragment() {
 
             if (it.isSuccessful) {
 
-                    if (email.equals(emailnago)){
-                        findNavController().navigate(
-                LoginFragmentDirections.actionLoginFragmentToNgoDashBoardFragment()
-                )
-                    }
-              else {
-                        findNavController().navigate(
-                            LoginFragmentDirections.actionLoginFragmentToDonorDashBoardFragment()
-                        )
+                dbDonar.collection("Donar")
+                    .get()
+                    .addOnSuccessListener { documents ->
+
+                        for (document in documents )
+                        {
+                            // Log.e("exit", "DocumentSnapshot data: ${document.get("email")}")
+                            emaildonor = document.get("email").toString()
+                            Log.e("emails", "DocumentSnapshot data: ${emaildonor}")
+
+                            if (email.equals(emaildonor)){
+
+                                PrefManager.setBoolean(PrefManager.IS_LOGIN, true)
+                                PrefManager.setString(PrefManager.ACCESS_TOKEN,email)
+                                findNavController().navigate(
+                                    LoginFragmentDirections.actionLoginFragmentToDonorDashBoardFragment()
+                                )
+                            }
+                        }
                     }
 
-//                if(email.equals(auth.currentUser?.)){
-//                    LoginFragmentDirections.actionLoginFragmentToDonorDashBoardFragment()
-//                }
-//
-//            }
-//            else if (it.isSuccessful){
-//                findNavController().navigate(
-//                LoginFragmentDirections.actionLoginFragmentToDonorDashBoardFragment()
-//                )
-//            }
-//            else
-//            {
-//                Toast.makeText(requireContext(), "Authentication Failed", Toast.LENGTH_LONG).show()
-//            }
+                dbNgo.collection("NGO")
+                    .get()
+                    .addOnSuccessListener { documents ->
+
+                        for (document in documents )
+                        {
+                            emailnago = document.get("email").toString()
+                            if (email.equals(emailnago)) {
+
+                                PrefManager.setBoolean(PrefManager.IS_LOGIN, true)
+                                PrefManager.setString(PrefManager.ACCESS_TOKEN, email)
+                                findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToNgoDashBoardFragment())
+
+
+                            }
+                        }
+
+                    }
 
             }
 

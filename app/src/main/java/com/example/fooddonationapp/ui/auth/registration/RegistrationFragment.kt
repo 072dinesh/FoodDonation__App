@@ -12,6 +12,8 @@ import com.example.fooddonationapp.model.Donor
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
 
 
 class RegistrationFragment : Fragment() {
@@ -21,7 +23,7 @@ class RegistrationFragment : Fragment() {
     lateinit var typeSpin : Spinner
 
     lateinit var auth: FirebaseAuth
-
+    private lateinit var topicList: MutableMap<String,Any>
     lateinit var email: TextView
     lateinit var password: TextView
     lateinit var name : TextView
@@ -30,6 +32,9 @@ class RegistrationFragment : Fragment() {
     lateinit var address : TextView
     lateinit var databaseReference: DatabaseReference
     lateinit var databaseReferenceDonar: DatabaseReference
+    private lateinit var dbNgo : FirebaseFirestore
+    private lateinit var dbDonar : FirebaseFirestore
+
     private var a:String?=null
 
     override fun onCreateView(
@@ -38,8 +43,6 @@ class RegistrationFragment : Fragment() {
     ): View? {
 
         _binding = FragmentRegistrationBinding.inflate(inflater,container,false)
-
-
 
 
         auth= FirebaseAuth.getInstance()
@@ -60,6 +63,8 @@ class RegistrationFragment : Fragment() {
 
         }
 
+        dbNgo = FirebaseFirestore.getInstance()
+        dbDonar = FirebaseFirestore.getInstance()
 
         databaseReference = FirebaseDatabase.getInstance().getReference("NGO")
 
@@ -74,11 +79,7 @@ class RegistrationFragment : Fragment() {
         spinner()
         return binding.root
 
-
-
     }
-
-
 
     private fun spinner(){
         binding.spinner.onItemSelectedListener = object :  AdapterView.OnItemSelectedListener {
@@ -100,8 +101,6 @@ class RegistrationFragment : Fragment() {
     }
 
 
-
-
     private fun setOnCheckedChangeListener() {
 
        var Donar =  binding.materialRadioButton
@@ -118,11 +117,8 @@ class RegistrationFragment : Fragment() {
     }
 
 
-
     private fun singUpUsers()
     {
-
-
 
         var email = binding.editEmail.text.toString()
         var password=binding.editPassword.text.toString()
@@ -139,28 +135,59 @@ class RegistrationFragment : Fragment() {
 //            Toast.makeText(requireContext(), "Password and Confirm Password do not match", Toast.LENGTH_LONG).show()
 //            return
 //        }
+        //        val email= binding.editEmail.text.toString()
+//        val password=binding.editPassword.text.toString()
 
+        var id=databaseReferenceDonar.push().key.toString()
+        val add = binding.editAddress.text.toString()
+        val city=a
+        val phoneno = binding.editPhone.text.toString()
+        val username = binding.username.text.toString()
 
         auth.createUserWithEmailAndPassword(email,password)
             .addOnCompleteListener(requireActivity()) {
                 if(it.isSuccessful){
-                    Toast.makeText(requireContext(), "Successfully Registered", Toast.LENGTH_LONG).show()
-                    var id=databaseReferenceDonar.push().key.toString()
-                    val add = binding.editAddress.text.toString()
-                    val email= binding.editEmail.text.toString()
-                    val password=binding.editPassword.text.toString()
-                    val city=a
-                    val phoneno = binding.editPhone.text.toString()
-                    val username = binding.username.text.toString()
-                    val fooddata = Donor(id,add,email,password,city.toString(),phoneno,username)
-                    databaseReferenceDonar.child(id).setValue(fooddata)
-                    Toast.makeText(requireContext(),"Record Inserted Successfully", Toast.LENGTH_LONG).show()
 
-                    findNavController().navigate(
+                   topicList = HashMap()
 
-                        RegistrationFragmentDirections.actionRegistrationFragmentToLoginFragment()
+//                    topicList["id"] = id
+                        topicList["add"] = add
+                        topicList["email"] = email
+                        topicList["password"] = password
+                        topicList["city"] = city.toString()
+                        topicList["phoneno"] = phoneno
+                        topicList["username"]=username
 
-                    )
+                        dbDonar.collection("Donar")
+                            .add(topicList)
+                            .addOnSuccessListener {
+                                Toast.makeText(requireContext(),"Record Inserted Successfully", Toast.LENGTH_LONG).show()
+
+                                findNavController().navigate(
+
+                                    RegistrationFragmentDirections.actionRegistrationFragmentToLoginFragment()
+
+                                )
+                            }
+                    // val fooddata = Donor(id,add,email,password,city.toString(),phoneno,username)
+//                    Toast.makeText(requireContext(), "Successfully Registered", Toast.LENGTH_LONG).show()
+//                    var id=databaseReferenceDonar.push().key.toString()
+//                    val add = binding.editAddress.text.toString()
+//                    val email= binding.editEmail.text.toString()
+//                    val password=binding.editPassword.text.toString()
+//                    val city=a
+//                    val phoneno = binding.editPhone.text.toString()
+//                    val username = binding.username.text.toString()
+//                    val fooddata = Donor(id,add,email,password,city.toString(),phoneno,username)
+//
+                    //databaseReferenceDonar.child(id).setValue(fooddata)
+//                    Toast.makeText(requireContext(),"Record Inserted Successfully", Toast.LENGTH_LONG).show()
+//
+//                    findNavController().navigate(
+//
+//                        RegistrationFragmentDirections.actionRegistrationFragmentToLoginFragment()
+//
+//                    )
                 }else {
                     Toast.makeText(requireContext(), "Registration Failed", Toast.LENGTH_LONG).show()
                 }
@@ -188,27 +215,39 @@ class RegistrationFragment : Fragment() {
 //            return
 //        }
 
+        val add = binding.editAddress.text.toString()
+        val city=a
+        val phoneno = binding.editPhone.text.toString()
+        val username = binding.username.text.toString()
+
 
         auth.createUserWithEmailAndPassword(email,password)
             .addOnCompleteListener(requireActivity()) {
                 if(it.isSuccessful){
-                    Toast.makeText(requireContext(), "Successfully Registered", Toast.LENGTH_LONG).show()
-                    var id=databaseReference.push().key.toString()
-                    val add = binding.editAddress.text.toString()
-                    val email= binding.editEmail.text.toString()
-                    val password=binding.editPassword.text.toString()
-                    val city=a
-                    val phoneno = binding.editPhone.text.toString()
-                    val username = binding.username.text.toString()
-                    val fooddata = Donor(id,add,email,password,city.toString(),phoneno,username)
-                    databaseReference.child(id).setValue(fooddata)
-                    Toast.makeText(requireContext(),"Record Inserted Successfully", Toast.LENGTH_LONG).show()
 
-                    findNavController().navigate(
+                    topicList = HashMap()
 
-                        RegistrationFragmentDirections.actionRegistrationFragmentToLoginFragment()
+//                    topicList["id"] = id
+                    topicList["add"] = add
+                    topicList["email"] = email
+                    topicList["password"] = password
+                    topicList["city"] = city.toString()
+                    topicList["phoneno"] = phoneno
+                    topicList["username"]=username
 
-                    )
+
+                    dbNgo.collection("NGO")
+                        .add(topicList)
+                        .addOnSuccessListener {
+                            Toast.makeText(requireContext(),"Record Inserted Successfully", Toast.LENGTH_LONG).show()
+
+                            findNavController().navigate(
+
+                                RegistrationFragmentDirections.actionRegistrationFragmentToLoginFragment()
+
+                            )
+                        }
+
                 }else {
                     Toast.makeText(requireContext(), "Registration Failed", Toast.LENGTH_LONG).show()
                 }
