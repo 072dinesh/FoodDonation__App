@@ -55,6 +55,9 @@
         <action
             android:id="@+id/action_ngoDashBoardFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_ngoDashBoardFragment_to_requestFormFragment"
+            app:destination="@id/requestFormFragment" />
     </fragment>
     <fragment
         android:id="@+id/donorDashBoardFragment"

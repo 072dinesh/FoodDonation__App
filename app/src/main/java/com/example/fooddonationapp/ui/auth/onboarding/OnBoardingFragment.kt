@@ -79,7 +79,7 @@ class OnBoardingFragment : Fragment() {
         {
             Timber.e("=====", auths.currentUser?.email.toString())
 
-            if (auths.currentUser?.email.toString() == emailnago){
+            if (auths.currentUser?.email.toString() == "dinesh@gmail.com"){
                 Toast.makeText(requireContext(), "NGO is already login!", Toast.LENGTH_LONG).show()
 
                 findNavController().navigate(OnBoardingFragmentDirections.actionOnBoardingFragmentToNgoDashBoardFragment())

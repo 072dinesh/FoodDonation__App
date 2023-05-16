@@ -1,6 +1,10 @@
 package com.example.fooddonationapp.ui.dashboard.ngo
 
 import android.annotation.SuppressLint
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -9,11 +13,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.navigation.NavController
 import androidx.viewpager2.widget.ViewPager2
 import androidx.navigation.fragment.findNavController
 import com.example.fooddonationapp.R
 import com.example.fooddonationapp.databinding.FragmentNgoDashBoardBinding
+import com.example.fooddonationapp.ui.tabs.ngo.recent.requsetform.RequestFormFragment
+import com.example.fooddonationapp.utils.Constant
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.firebase.auth.FirebaseAuth
 import kotlin.concurrent.fixedRateTimer
@@ -24,7 +31,7 @@ class NgoDashBoardFragment : Fragment() {
 private  var _binding : FragmentNgoDashBoardBinding ? = null
     private val binding get() = _binding!!
     private lateinit var navController: NavController
-
+    //val form = RequestFormFragment()
 
     private val tabTitle = arrayListOf("Recent","History")
     lateinit var auth: FirebaseAuth
@@ -42,6 +49,7 @@ private  var _binding : FragmentNgoDashBoardBinding ? = null
     }
     @SuppressLint("UseCompatLoadingForDrawables", "ResourceAsColor")
     private fun setUpUi(){
+
         binding.vpNgoDashBoard.adapter = NgoDashBoardPagerAdapter(this)
 //        TabLayoutMediator(binding.tlNgoDashBoard,binding.vpNgoDashBoard){tab,position ->
 //            tab.text = tabTitle[position]
@@ -116,8 +124,30 @@ private  var _binding : FragmentNgoDashBoardBinding ? = null
 //        })
     }
 
+//    private val openRequestForm : BroadcastReceiver =
+//        object : BroadcastReceiver(){
+//            override fun onReceive(context: Context?, intent: Intent?) {
+//                //binding.fragmentContainerView.getFragment<RequestFormFragment>()
+//                // fragmentManager.findFragmentById(R.id.requestFormFragment)
+//                fragmentManager?.beginTransaction()
+//                    ?.add(R.id.fragmentContainerView, form)
+//                    ?.commit()
+//
+//            }
+//
+//        }
+
+    override fun onStart() {
+        super.onStart()
+//        LocalBroadcastManager.getInstance(requireContext()).registerReceiver(
+//            (openRequestForm),
+//            IntentFilter(Constant.BROADCAST_RECEIVER.REQUEST_FORM)
+//        )
+    }
+
     override fun onDestroy() {
         super.onDestroy()
+        //LocalBroadcastManager.getInstance(requireContext()).unregisterReceiver(openRequestForm)
         binding.vpNgoDashBoard.unregisterOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
 
         })
