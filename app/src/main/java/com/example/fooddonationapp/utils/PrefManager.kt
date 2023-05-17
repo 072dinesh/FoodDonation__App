@@ -10,6 +10,7 @@ object PrefManager {
     private const val PREFS_NAME = "params"
     const val IS_LOGIN = "IS_LOGIN"
     const val ACCESS_TOKEN = "ACCESS_TOKEN"
+    const val CITY_TOKEN = "CITY"
     const val FIRE_BASE_TOKEN="FIRE_BASE_TOKEN"
     const val DONT_SHOW_CAP_LIMIT_POPUP = "SHOW_CAP_LIMIT_POPUP"
     const val LOGIN_NGO ="LOGIN_NGO"
