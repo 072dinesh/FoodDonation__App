@@ -47,62 +47,16 @@ class OnBoardingFragment : Fragment() {
         dbNgo = FirebaseFirestore.getInstance()
         dbDonar = FirebaseFirestore.getInstance()
 
-
+        setUpUi()
+        setOnClicks()
         //database_store()
-        CheckUserLogin()
+//        CheckUserLogin()
 
         return binding.root
     }
 
 
-    private fun CheckUserLogin() {
-         var data =  PrefManager.getString(PrefManager.ACCESS_TOKEN,"email")
-        if (auths.currentUser != null)
-        {
-                dbDonar.collection("Donar")
-                    .get()
-                    .addOnSuccessListener { documents ->
 
-                        for (document in documents )
-                        {
-                            emaildonor = document.get("email").toString()
-                            if(data.equals(emaildonor)) {
-
-                                findNavController().navigate(OnBoardingFragmentDirections.actionOnBoardingFragmentToDonorDashBoardFragment())
-                                // Log.e("exit", "DocumentSnapshot data: ${document.get("email")}")
-
-                                Log.e("emails", "DocumentSnapshot data: ${emaildonor}")
-                            }
-                        }
-
-                    }
-
-            dbNgo.collection("NGO")
-                .get()
-                .addOnSuccessListener { documents ->
-
-                    for (document in documents )
-                    {
-                        emailnago = document.get("email").toString()
-                        if(data.equals(emailnago)) {
-
-                            Log.e("exit", "DocumentSnapshot data: ${document.get("email")}")
-
-                            findNavController().navigate(OnBoardingFragmentDirections.actionOnBoardingFragmentToNgoDashBoardFragment())
-                        }
-                    }
-
-                }
-
-        }
-        else {
-            setUpUi()
-            setOnClicks()
-
-        }
-
-
-    }
 
     private fun setUpUi(){
         Timber.e("setupui")

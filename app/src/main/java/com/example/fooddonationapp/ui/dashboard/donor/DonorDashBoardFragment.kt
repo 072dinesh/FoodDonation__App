@@ -15,6 +15,7 @@ import com.example.fooddonationapp.databinding.FragmentDonorDashBoardBinding
 import com.example.fooddonationapp.model.Donor
 import com.example.fooddonationapp.utils.PrefManager
 import com.google.firebase.auth.FirebaseAuth
+import timber.log.Timber
 
 
 class DonorDashBoardFragment : Fragment() {
@@ -28,12 +29,14 @@ class DonorDashBoardFragment : Fragment() {
     ): View? {
         _binding = FragmentDonorDashBoardBinding.inflate(inflater,container,false)
         auth= FirebaseAuth.getInstance()
+        Timber.e(auth.currentUser?.email.toString())
         setUpUi()
         setonclick()
         return binding.root
     }
 
     private fun setUpUi(){
+
         binding.vpDonorDashBoard.adapter = DonorDashBoardPagerAdapter(this)
         binding.btnDashBoardDonorRecentTab.setTextColor(ContextCompat.getColor(requireContext(),R.color.purple_light))
         binding.btnDashBoardDonorHistoryTab.setOnClickListener {

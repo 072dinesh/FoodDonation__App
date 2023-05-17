@@ -16,6 +16,7 @@ import com.example.fooddonationapp.utils.PrefManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.firestore.FirebaseFirestore
+import timber.log.Timber
 
 class LoginFragment : Fragment() {
     private var _binding : FragmentLoginBinding? = null
@@ -52,9 +53,6 @@ class LoginFragment : Fragment() {
 
 
 
-//        databaseReference = FirebaseDatabase.getInstance().getReference("NGO")
-//        databaseReference2 = FirebaseDatabase.getInstance().getReference("Donor")
-
 
         return binding.root
     }
@@ -90,7 +88,9 @@ class LoginFragment : Fragment() {
                             if (email.equals(emaildonor)){
 
                                 PrefManager.setBoolean(PrefManager.IS_LOGIN, true)
-                                PrefManager.setString(PrefManager.ACCESS_TOKEN,email)
+                                PrefManager.setString(PrefManager.ACCESS_TOKEN,"Donor")
+                                var data =  PrefManager.getString(PrefManager.ACCESS_TOKEN)
+                                Timber.e("Data Hsred Login",data)
                                 findNavController().navigate(
                                     LoginFragmentDirections.actionLoginFragmentToDonorDashBoardFragment()
                                 )
@@ -108,7 +108,9 @@ class LoginFragment : Fragment() {
                             if (email.equals(emailnago)) {
 
                                 PrefManager.setBoolean(PrefManager.IS_LOGIN, true)
-                                PrefManager.setString(PrefManager.ACCESS_TOKEN, email)
+                                PrefManager.setString(PrefManager.ACCESS_TOKEN, "Ngo")
+                                var data =  PrefManager.getString(PrefManager.ACCESS_TOKEN)
+                                Timber.e(data.toString())
                                 findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToNgoDashBoardFragment())
 
 
