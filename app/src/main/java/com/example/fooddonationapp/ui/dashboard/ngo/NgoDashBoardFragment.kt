@@ -17,13 +17,17 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.navigation.NavController
 import androidx.viewpager2.widget.ViewPager2
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fooddonationapp.R
 import com.example.fooddonationapp.databinding.FragmentNgoDashBoardBinding
+import com.example.fooddonationapp.model.Request
+import com.example.fooddonationapp.ui.tabs.ngo.history.HisoryNgoTabAdapter
 import com.example.fooddonationapp.utils.PrefManager
 import com.example.fooddonationapp.ui.tabs.ngo.recent.requsetform.RequestFormFragment
 import com.example.fooddonationapp.utils.Constant
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.*
 import timber.log.Timber
 import kotlin.concurrent.fixedRateTimer
 
@@ -37,6 +41,8 @@ private  var _binding : FragmentNgoDashBoardBinding ? = null
 
     private val tabTitle = arrayListOf("Recent","History")
     lateinit var auth: FirebaseAuth
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -49,6 +55,8 @@ private  var _binding : FragmentNgoDashBoardBinding ? = null
         Timber.e(auth.currentUser?.email.toString())
         setUpUi()
         setonclick()
+
+
         return binding.root
     }
     @SuppressLint("UseCompatLoadingForDrawables", "ResourceAsColor")
@@ -115,6 +123,7 @@ private  var _binding : FragmentNgoDashBoardBinding ? = null
         })
 
     }
+
 
 
 

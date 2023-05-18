@@ -117,8 +117,8 @@
 
         </TextView>
 
-        <TextView
 
+        <TextView
             android:id="@+id/btn_dash_board_ngo_history_tab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -13,4 +13,17 @@
     <string name="location">Location</string>
     <string name="select_time">Select Time</string>
     <string name="request">Request</string>
+    <string name="login">Login</string>
+    <string name="registration">Registration</string>
+    <string name="signup">Sign Up</string>
+    <string name="Continue">Continue</string>
+    <string name="NGO">NGO</string>
+    <string name="Donar">Donar</string>
+    <string name="accept_by_name">Accepted By %1$s</string>
+    <string name="Quantity_of_foodDonated">Quantity of Food Donated %1$s</string>
+    <string name="Phone_Number">Phone Number %1$s</string>
+    <string name="status">Status %1$s</string>
+    <string name="date">Date %1$s</string>
+    <string name="location_ngo">Location %1$s</string>
+
 </resources>

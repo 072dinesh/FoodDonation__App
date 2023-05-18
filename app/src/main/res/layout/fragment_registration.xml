@@ -21,7 +21,7 @@
         android:layout_marginTop="10dp"
         android:fontFamily="@font/cherry_swash_bold"
         android:gravity="center"
-        android:text="Registration"
+        android:text="@string/registration"
         android:textColor="@color/purple_black"
         android:textSize="25dp"
         android:textStyle="bold"
@@ -45,11 +45,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView">
 
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-
             android:paddingBottom="40dp">
 
             <com.google.android.material.textfield.TextInputLayout
@@ -60,7 +58,7 @@
                 android:layout_margin="15dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
-                android:hint="Enter user name"
+                android:hint="Enter name"
                 app:boxStrokeColor="@color/purple_1"
                 app:endIconMode="clear_text"
                 app:hintAnimationEnabled="true"
@@ -189,9 +187,9 @@
                 android:id="@+id/btncontinue"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="8dp"
                 android:paddingVertical="17dp"
-                android:text="Continue"
+                android:text="@string/Continue"
                 android:textAlignment="center"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
@@ -199,6 +197,7 @@
                 android:textStyle="bold"
                 app:cornerRadius="30dp"
                 app:layout_constraintEnd_toEndOf="@+id/textInputLayout5"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="@+id/textInputLayout5"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout5">
 
@@ -221,7 +220,7 @@
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="10dp"
                     android:buttonTint="@color/purple_black"
-                    android:text="NGO"
+                    android:text="@string/NGO"
                     app:layout_constraintEnd_toStartOf="@+id/materialRadioButton">
 
                 </com.google.android.material.radiobutton.MaterialRadioButton>
@@ -231,7 +230,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
-                    android:text="Donar"
+                    android:text="@string/Donar"
                     android:buttonTint="@color/purple_black"
                     app:layout_constraintBottom_toBottomOf="@+id/RadioButtonNGO">
 
