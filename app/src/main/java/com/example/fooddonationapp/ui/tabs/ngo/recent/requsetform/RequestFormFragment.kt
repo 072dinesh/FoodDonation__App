@@ -85,7 +85,7 @@ class RequestFormFragment : Fragment() {
         topicList = HashMap()
 
         var ngoname:String?=null
-        dbNgo.collection("NGO").get()
+        dbNgo.collection("NGO").orderBy("time").get()
             .addOnSuccessListener {documents ->
 
                 for (document in documents ){

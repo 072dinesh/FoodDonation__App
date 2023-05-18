@@ -40,7 +40,7 @@ class HistoryNgoTabFragment : Fragment() {
         return binding.root
     }
     private fun EventChangeListerner(){
-        db.collection("Request")
+        db.collection("Request").orderBy("time",Query.Direction.DESCENDING)
             .get().addOnSuccessListener {
 
                 if (!it.isEmpty){
