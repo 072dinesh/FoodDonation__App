@@ -59,6 +59,9 @@
         <action
             android:id="@+id/action_ngoDashBoardFragment_to_requestFormFragment"
             app:destination="@id/requestFormFragment" />
+        <action
+            android:id="@+id/action_ngoDashBoardFragment_to_profileFragment2"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/donorDashBoardFragment"
@@ -71,6 +74,9 @@
         <action
             android:id="@+id/action_donorDashBoardFragment_to_onBoardingFragment"
             app:destination="@id/onBoardingFragment" />
+        <action
+            android:id="@+id/action_donorDashBoardFragment_to_profileFragment2"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/recentNgoTabFragment"
@@ -87,4 +93,9 @@
         android:name="com.example.fooddonationapp.ui.tabs.ngo.recent.requsetform.RequestFormFragment"
         android:label="fragment_request_form"
         tools:layout="@layout/fragment_request_form" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.fooddonationapp.ui.profile.ProfileFragment"
+        android:label="ProfileFragment"
+        tools:layout="@layout/fragment_profile"/>
 </navigation>

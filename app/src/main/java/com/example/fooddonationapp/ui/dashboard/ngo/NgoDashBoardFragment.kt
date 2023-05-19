@@ -51,7 +51,7 @@ private  var _binding : FragmentNgoDashBoardBinding ? = null
         setonclick()
         return binding.root
     }
-    @SuppressLint("UseCompatLoadingForDrawables", "ResourceAsColor")
+    @SuppressLint("UseCompatLoadingForDrawables", "ResourceAsColor", "SuspiciousIndentation")
     private fun setUpUi(){
 
         binding.vpNgoDashBoard.adapter = NgoDashBoardPagerAdapter(this)
@@ -137,6 +137,9 @@ private  var _binding : FragmentNgoDashBoardBinding ? = null
             findNavController().navigate(NgoDashBoardFragmentDirections.actionNgoDashBoardFragmentToOnBoardingFragment())
 
 
+        }
+        binding.ivDashBoardNgoProfilePic.setOnClickListener {
+            findNavController().navigate(NgoDashBoardFragmentDirections.actionNgoDashBoardFragmentToProfileFragment2())
         }
     }
 

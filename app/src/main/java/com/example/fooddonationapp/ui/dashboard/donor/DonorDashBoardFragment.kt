@@ -93,6 +93,10 @@ class DonorDashBoardFragment : Fragment() {
 
             findNavController().navigate(DonorDashBoardFragmentDirections.actionDonorDashBoardFragmentToOnBoardingFragment())
         }
+        binding.tvDashBoardProfile.setOnClickListener {
+            findNavController().navigate(DonorDashBoardFragmentDirections.actionDonorDashBoardFragmentToProfileFragment2())
+        }
+
     }
 
 }
