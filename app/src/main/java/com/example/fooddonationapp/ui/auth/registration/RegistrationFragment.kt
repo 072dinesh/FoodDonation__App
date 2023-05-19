@@ -1,6 +1,7 @@
 package com.example.fooddonationapp.ui.auth.registration
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +13,11 @@ import com.example.fooddonationapp.model.Donor
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.DocumentChange
+import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.FirebaseFirestoreException
+import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.ktx.Firebase
 
 
@@ -34,6 +39,7 @@ class RegistrationFragment : Fragment() {
     lateinit var databaseReferenceDonar: DatabaseReference
     private lateinit var dbNgo : FirebaseFirestore
     private lateinit var dbDonar : FirebaseFirestore
+    private lateinit var UserArray : ArrayList<Donor>
 
     private var a:String?=null
 
@@ -169,6 +175,28 @@ class RegistrationFragment : Fragment() {
 
                                 )
                             }
+
+//                    dbDonar.collection("Donar")
+//                        .addSnapshotListener(object :EventListener<QuerySnapshot>{
+//                            override fun onEvent(
+//                                value: QuerySnapshot?,
+//                                error: FirebaseFirestoreException?
+//                            ) {
+//                                if(error != null){
+//
+//                                }
+//
+//                                for (dv : DocumentChange in value?.documentChanges!!)
+//                                {
+//                                   if(dv.type == DocumentChange.Type.ADDED)
+//                                   {
+//                                       UserArray.add(dv.document.toObject(Donor::class.java))
+//                                   }
+//                                }
+//                            }
+//
+//
+//                        })
                     // val fooddata = Donor(id,add,email,password,city.toString(),phoneno,username)
 //                    Toast.makeText(requireContext(), "Successfully Registered", Toast.LENGTH_LONG).show()
 //                    var id=databaseReferenceDonar.push().key.toString()

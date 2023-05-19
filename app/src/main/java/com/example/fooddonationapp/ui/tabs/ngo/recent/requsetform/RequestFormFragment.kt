@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.fooddonationapp.R
 import com.example.fooddonationapp.databinding.FragmentRequestFormBinding
+import com.example.fooddonationapp.model.Request
 import com.example.fooddonationapp.ui.auth.login.LoginFragmentDirections
 import com.example.fooddonationapp.ui.auth.registration.RegistrationFragmentDirections
 import com.example.fooddonationapp.utils.PrefManager
@@ -33,7 +34,7 @@ class RequestFormFragment : Fragment() {
     private lateinit var topicList: MutableMap<String,Any>
     private lateinit var userid:String
     private lateinit var auth : FirebaseAuth
-
+    var data = Request()
     var spinnervalue:String?=null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -83,40 +84,48 @@ class RequestFormFragment : Fragment() {
     private fun requestNGO(){
         topicList = HashMap()
 
-        var quantity = binding.etFormQuantity.text.toString()
-        var location = spinnervalue.toString()
-        val a = DateTimeFormatter.ofPattern("HH:mm")
-        val currenttime = LocalDateTime.now().format(a)
-        //val time = binding.timePicker.minute
-
-        topicList["location"] = quantity
-
-        topicList["quantity"] = location
-
-        topicList["time"] = currenttime
-        topicList["ngoemail"] = auth.currentUser?.email.toString()
-        topicList["status"] = "Pending"
-        topicList["acceptbyname"] =""
-        topicList["acceptbyemail"]=""
-
-        dbNgo.collection("NGO").get()
+        var ngoname:String?=null
+        dbNgo.collection("NGO").orderBy("time").get()
             .addOnSuccessListener {documents ->
 
                 for (document in documents ){
                     if (document.get("email").toString()==auth.currentUser?.email.toString())
                     {
                         Timber.e(document.get("username").toString())
-                        topicList["ngoname"] = document.get("username").toString()
-
+                        topicList["username"] = document.get("username").toString()
+                        topicList["phoneno"] = document.get("phoneno").toString()
                     }
                 }
+                var quantity = binding.etFormQuantity.text.toString()
+                var location = spinnervalue.toString()
+                val a = DateTimeFormatter.ofPattern("HH:mm")
+                val currenttime = LocalDateTime.now().format(a)
+
+                val dateTime = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+                val currentdate = LocalDateTime.now().format(dateTime)
+
+                //val time = binding.timePicker.minute
+
+                topicList["location"] = location
+
+                topicList["quantity"] = quantity
+
+                topicList["time"] = currenttime
+                topicList["ngoemail"] = auth.currentUser?.email.toString()
+                topicList["status"] = "Pending"
+                topicList["acceptbyname"] =""
+                topicList["acceptbyemail"]=""
+                topicList["date"]=currentdate
+
+
+                dbNgo.collection("Request")
+                    .add(topicList)
+                    .addOnSuccessListener {
+
+                    }
             }
 
-        dbNgo.collection("Request")
-            .add(topicList)
-            .addOnSuccessListener {
 
-        }
 
     }
 
