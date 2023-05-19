@@ -16,10 +16,15 @@
     <string name="Save">Save</string>
     <string name="request_for_food">Request For Food</string>
     <string name="edit_profile">Edit Profile</string>
-    <string name="quantity">Quantity</string>
+    <string name="food_quantity">Food Quantity</string>
     <string name="location">Location</string>
     <string name="select_time">Select Time</string>
     <string name="request">Request</string>
+    <string name="request_from_format">Request By <b>%1$s</b></string>
+    <string name="request_quantity_format">Quantity For <b> %1$s </b>People</string>
+    <string name="request_location_format">At Location <b>%1$s</b></string>
+    <string name="request_phone_format">For More Information Call on <b>%1$s</b></string>
+    <string name="accept">Accept</string>
     <string name="login">Login</string>
     <string name="registration">Registration</string>
     <string name="signup">Sign Up</string>

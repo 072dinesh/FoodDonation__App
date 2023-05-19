@@ -15,10 +15,14 @@
             app:destination="@id/registrationFragment" />
         <action
             android:id="@+id/action_loginFragment_to_ngoDashBoardFragment"
-            app:destination="@id/ngoDashBoardFragment" />
+            app:destination="@id/ngoDashBoardFragment"
+            app:popUpTo="@id/onBoardingFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_loginFragment_to_donorDashBoardFragment"
-            app:destination="@id/donorDashBoardFragment" />
+            app:destination="@id/donorDashBoardFragment"
+            app:popUpTo="@id/onBoardingFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/onBoardingFragment"

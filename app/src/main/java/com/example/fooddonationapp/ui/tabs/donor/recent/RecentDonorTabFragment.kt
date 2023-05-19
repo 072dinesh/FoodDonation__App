@@ -6,16 +6,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.fooddonationapp.R
+import com.example.fooddonationapp.databinding.FragmentOnBoardingBinding
+import com.example.fooddonationapp.databinding.FragmentRecentDonorTabBinding
 
 
 class RecentDonorTabFragment : Fragment() {
-
+    private var _binding : FragmentRecentDonorTabBinding? = null
+    private val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_recent_donor_tab, container, false)
+        _binding = FragmentRecentDonorTabBinding.inflate(inflater,container,false)
+
+        return binding.root
     }
 
 
