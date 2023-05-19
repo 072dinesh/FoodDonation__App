@@ -34,12 +34,12 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="24dp"
-                android:fontFamily="@font/cherry_swash_bold"
+                android:fontFamily="@font/cherry_swash"
                 android:lineHeight="26dp"
                 android:text="@string/accept_by_name"
-                android:textColor="@color/purple_black"
+                android:textColor="@color/purple_1"
                 android:textSize="18sp"
-                android:textStyle="bold"
+
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -51,12 +51,12 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:fontFamily="@font/cherry_swash_bold"
+                android:fontFamily="@font/cherry_swash"
                 android:lineHeight="26dp"
                 android:text="@string/location_ngo"
-                android:textColor="@color/purple_black"
+                android:textColor="@color/purple_1"
                 android:textSize="18sp"
-                android:textStyle="bold"
+
                 app:layout_constraintEnd_toEndOf="@+id/donar_name"
                 app:layout_constraintStart_toStartOf="@+id/donar_name"
                 app:layout_constraintTop_toBottomOf="@+id/donar_name">
@@ -68,12 +68,12 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:fontFamily="@font/cherry_swash_bold"
+                android:fontFamily="@font/cherry_swash"
                 android:lineHeight="26dp"
                 android:text="@string/Quantity_of_foodDonated"
-                android:textColor="@color/purple_black"
+                android:textColor="@color/purple_1"
                 android:textSize="18sp"
-                android:textStyle="bold"
+
                 app:layout_constraintEnd_toEndOf="@+id/NGO_location"
                 app:layout_constraintStart_toStartOf="@+id/NGO_location"
                 app:layout_constraintTop_toBottomOf="@+id/NGO_location">
@@ -85,12 +85,12 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:fontFamily="@font/cherry_swash_bold"
+                android:fontFamily="@font/cherry_swash"
                 android:lineHeight="26dp"
                 android:text="@string/Phone_Number"
-                android:textColor="@color/purple_black"
+                android:textColor="@color/purple_1"
                 android:textSize="18sp"
-                android:textStyle="bold"
+
                 app:layout_constraintEnd_toEndOf="@+id/NGO_quantity"
                 app:layout_constraintStart_toStartOf="@+id/NGO_quantity"
                 app:layout_constraintTop_toBottomOf="@+id/NGO_quantity">
@@ -102,12 +102,12 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:fontFamily="@font/cherry_swash_bold"
+                android:fontFamily="@font/cherry_swash"
                 android:lineHeight="26dp"
                 android:text="@string/date"
-                android:textColor="@color/purple_black"
+                android:textColor="@color/purple_1"
                 android:textSize="18sp"
-                android:textStyle="bold"
+
                 app:layout_constraintEnd_toEndOf="@+id/NGO_phonenumber"
                 app:layout_constraintStart_toStartOf="@+id/NGO_phonenumber"
                 app:layout_constraintTop_toBottomOf="@+id/NGO_phonenumber">
@@ -119,13 +119,13 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:fontFamily="@font/cherry_swash_bold"
+                android:fontFamily="@font/cherry_swash"
                 android:lineHeight="26dp"
                 android:text="@string/status"
-                android:textColor="@color/purple_black"
+                android:textColor="@color/purple_1"
                 android:textSize="18sp"
 
-                android:textStyle="bold"
+
                 app:layout_constraintEnd_toEndOf="@+id/date_"
                 app:layout_constraintTop_toBottomOf="@+id/date_">
 

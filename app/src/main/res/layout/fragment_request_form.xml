@@ -8,12 +8,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.tabs.ngo.recent.requsetform.RequestFormFragment">
-
 
     <ImageView
         android:id="@+id/imageView2"
@@ -40,17 +38,20 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <com.google.android.material.card.MaterialCardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         style="@style/Card_Form"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" >
+        app:layout_constraintTop_toBottomOf="@+id/textView3">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingBottom="50dp">
+            android:layout_marginBottom="20dp">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout6"
@@ -77,15 +78,14 @@
 
             <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
                 android:id="@+id/spinner"
+                style="@style/Widget.AppCompat.Spinner.DropDown"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                style="@style/Widget.AppCompat.Spinner.DropDown"
                 android:layout_marginTop="15dp"
                 app:layout_constraintEnd_toEndOf="@+id/textInputLayout6"
                 app:layout_constraintStart_toStartOf="@+id/textInputLayout6"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout6"
                 app:smsp_floatingLabelColor="@color/purple_black"
-                app:smsp_outlinedBoxColor="@color/purple_black"
                 app:smsp_floatingLabelText="Select Location"
                 app:smsp_hint="Select city"
                 app:smsp_hintColor="@color/purple_black"
@@ -94,33 +94,32 @@
                 app:smsp_itemListHintBackgroundColor="#808080"
                 app:smsp_itemListHintColor="#FFFFFF"
                 app:smsp_multilineError="false"
+                app:smsp_outlinedBoxColor="@color/purple_black"
                 app:smsp_selectedItemListColor="#5297FF" />
 
 
+            <!--            <TextView-->
+            <!--                android:id="@+id/textView"-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_alignBottom="@+id/timePicker"-->
+            <!--                android:layout_marginTop="15dp"-->
+            <!--                android:paddingLeft="15dp"-->
+            <!--                android:text="Select Date"-->
+            <!--                android:textSize="18sp"-->
+            <!--                app:layout_constraintEnd_toEndOf="@+id/spinner"-->
+            <!--                app:layout_constraintStart_toStartOf="@+id/spinner"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/spinner" />-->
 
-<!--            <TextView-->
-<!--                android:id="@+id/textView"-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_alignBottom="@+id/timePicker"-->
-<!--                android:layout_marginTop="15dp"-->
-<!--                android:paddingLeft="15dp"-->
-<!--                android:text="Select Date"-->
-<!--                android:textSize="18sp"-->
-<!--                app:layout_constraintEnd_toEndOf="@+id/spinner"-->
-<!--                app:layout_constraintStart_toStartOf="@+id/spinner"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/spinner" />-->
-
-<!--            <TimePicker-->
-<!--                android:id="@+id/timePicker"-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_centerHorizontal="true"-->
-<!--                app:layout_constraintEnd_toEndOf="@+id/textView"-->
-<!--                app:layout_constraintStart_toStartOf="@+id/textView"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/textView"-->
-<!--                android:timePickerMode="spinner"/>-->
-
+            <!--            <TimePicker-->
+            <!--                android:id="@+id/timePicker"-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_centerHorizontal="true"-->
+            <!--                app:layout_constraintEnd_toEndOf="@+id/textView"-->
+            <!--                app:layout_constraintStart_toStartOf="@+id/textView"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/textView"-->
+            <!--                android:timePickerMode="spinner"/>-->
 
 
             <Button
@@ -128,8 +127,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:text="@string/request"
                 android:paddingVertical="17dp"
+                android:text="@string/request"
                 android:textAlignment="center"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
@@ -141,11 +140,9 @@
                 app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
 
-
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.core.widget.NestedScrollView>
+
 </layout>

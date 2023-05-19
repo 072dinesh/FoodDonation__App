@@ -19,6 +19,7 @@ import com.example.fooddonationapp.ui.auth.registration.RegistrationFragmentDire
 import com.example.fooddonationapp.utils.PrefManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import timber.log.Timber
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -51,6 +52,8 @@ class RequestFormFragment : Fragment() {
         val typeAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, types)
         typeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         typeSpin!!.setAdapter(typeAdapter)
+
+        typeSpin.setSelection(0)
 
         spinner()
 
@@ -85,7 +88,7 @@ class RequestFormFragment : Fragment() {
         topicList = HashMap()
 
         var ngoname:String?=null
-        dbNgo.collection("NGO").orderBy("time").get()
+        dbNgo.collection("NGO").orderBy("time",Query.Direction.DESCENDING).get()
             .addOnSuccessListener {documents ->
 
                 for (document in documents ){

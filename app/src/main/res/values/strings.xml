@@ -26,12 +26,13 @@
     <string name="Continue">Continue</string>
     <string name="NGO">NGO</string>
     <string name="Donar">Donar</string>
-    <string name="accept_by_name">Accepted By %1$s</string>
-    <string name="Quantity_of_foodDonated">Quantity of Food Donated %1$s</string>
-    <string name="Phone_Number">Phone Number %1$s</string>
-    <string name="status">Status %1$s</string>
-    <string name="date">Date %1$s</string>
-    <string name="location_ngo">Location %1$s</string>
+    <string name="no_Internet">no internet</string>
+    <string name="accept_by_name">Accepted By <b> %1$s</b></string>
+    <string name="Quantity_of_foodDonated">Quantity of Food Donated <b>%1$s</b> </string>
+    <string name="Phone_Number">Phone Number <b>%1$s</b></string>
+    <string name="status">Status <b>%1$s</b></string>
+    <string name="date">Date <b>%1$s</b></string>
+    <string name="location_ngo">Location <b>%1$s</b></string>
 
     <string name="enter_email">Enter Email</string>
 </resources>

@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fooddonationapp.R
 import com.example.fooddonationapp.databinding.FragmentNgoDashBoardBinding
 import com.example.fooddonationapp.model.Request
+import com.example.fooddonationapp.ui.auth.login.LoginFragmentDirections
 import com.example.fooddonationapp.ui.tabs.ngo.history.HisoryNgoTabAdapter
 import com.example.fooddonationapp.utils.PrefManager
 import com.example.fooddonationapp.ui.tabs.ngo.recent.requsetform.RequestFormFragment
@@ -37,11 +38,11 @@ class NgoDashBoardFragment : Fragment() {
 private  var _binding : FragmentNgoDashBoardBinding ? = null
     private val binding get() = _binding!!
     private lateinit var navController: NavController
-
-
+   var emailnago : String?=null
+    private lateinit var dbNgo : FirebaseFirestore
     private val tabTitle = arrayListOf("Recent","History")
     lateinit var auth: FirebaseAuth
-
+    private lateinit var topicList: MutableMap<String,Any>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,14 +54,65 @@ private  var _binding : FragmentNgoDashBoardBinding ? = null
         var data =  PrefManager.getString(PrefManager.ACCESS_TOKEN)
         Timber.e("Data Hsred Login",data)
         Timber.e(auth.currentUser?.email.toString())
+        dbNgo = FirebaseFirestore.getInstance()
+        //dated()
         setUpUi()
         setonclick()
 
 
         return binding.root
     }
+
+
+
+
+
     @SuppressLint("UseCompatLoadingForDrawables", "ResourceAsColor", "SuspiciousIndentation")
     private fun setUpUi(){
+
+        var data =  PrefManager.getString(PrefManager.ACCESS_TOKEN)
+        if(data.toString() == "Ngo"){
+            Timber.e(data.toString())
+
+            dbNgo.collection("NGO").get().addOnSuccessListener {documents ->
+
+                for (document in documents )
+                {
+                    emailnago = document.get("email").toString()
+                    Log.e("emails", "DocumentSnapshot data: ${emailnago}")
+
+                    if (auth.currentUser?.email.toString() == emailnago){
+
+                        Timber.e(document.get("username").toString())
+                        binding.tvCardNgoDashBoard.text = document.get("username").toString()
+
+                    }
+                }
+
+            }
+        }
+       if (data.toString() == "Donor"){
+
+            dbNgo.collection("Donar").get().addOnSuccessListener {documents ->
+
+                for (document in documents )
+                {
+                    emailnago = document.get("email").toString()
+                    Log.e("emails", "DocumentSnapshot data: ${emailnago}")
+
+                    if (auth.currentUser?.email.toString() == emailnago){
+
+                        Timber.e(document.get("username").toString())
+                        binding.tvCardNgoDashBoard.text = document.get("username").toString()
+
+                    }
+                }
+
+            }
+        }
+
+
+
 
         binding.vpNgoDashBoard.adapter = NgoDashBoardPagerAdapter(this)
 
@@ -121,6 +173,12 @@ private  var _binding : FragmentNgoDashBoardBinding ? = null
                 super.onPageSelected(position)
             }
         })
+
+
+
+
+
+
 
     }
 

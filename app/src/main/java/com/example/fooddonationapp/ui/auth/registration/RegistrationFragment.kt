@@ -7,6 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.fooddonationapp.databinding.FragmentRegistrationBinding
 import com.example.fooddonationapp.model.Donor
@@ -19,8 +22,10 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreException
 import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.ktx.Firebase
+import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
-
+@AndroidEntryPoint
 class RegistrationFragment : Fragment() {
     private var _binding : FragmentRegistrationBinding? = null
     private val binding get() = _binding!!
@@ -29,17 +34,15 @@ class RegistrationFragment : Fragment() {
 
     lateinit var auth: FirebaseAuth
     private lateinit var topicList: MutableMap<String,Any>
-    lateinit var email: TextView
-    lateinit var password: TextView
+
     lateinit var name : TextView
-    lateinit var phoneno : TextView
-    lateinit var city : TextView
-    lateinit var address : TextView
+
     lateinit var databaseReference: DatabaseReference
     lateinit var databaseReferenceDonar: DatabaseReference
     private lateinit var dbNgo : FirebaseFirestore
     private lateinit var dbDonar : FirebaseFirestore
-    private lateinit var UserArray : ArrayList<Donor>
+
+    private val viewModel: RegistrationViewModel by viewModels()
 
     private var a:String?=null
 
@@ -62,6 +65,16 @@ class RegistrationFragment : Fragment() {
 //
 //            )
 //        }
+
+
+
+        viewModel.allUsers.observe(viewLifecycleOwner, Observer {rood->
+
+
+        })
+
+
+        //binding.scoreText.text = viewModel.score.toString()
 
         binding.btncontinue.setOnClickListener {
 
@@ -136,19 +149,18 @@ class RegistrationFragment : Fragment() {
             return
 
         }
-//        if (password != passconfir)
-//        {
-//            Toast.makeText(requireContext(), "Password and Confirm Password do not match", Toast.LENGTH_LONG).show()
-//            return
-//        }
-        //        val email= binding.editEmail.text.toString()
-//        val password=binding.editPassword.text.toString()
+
 
         var id=databaseReferenceDonar.push().key.toString()
         val add = binding.editAddress.text.toString()
         val city=a
         val phoneno = binding.editPhone.text.toString()
         val username = binding.username.text.toString()
+
+        binding.lifecycleOwner = viewLifecycleOwner
+        binding.variable =viewModel.allUsers.value
+
+        Timber.e(binding.variable.toString())
 
         auth.createUserWithEmailAndPassword(email,password)
             .addOnCompleteListener(requireActivity()) {
@@ -258,13 +270,13 @@ class RegistrationFragment : Fragment() {
 //                    topicList["id"] = id
                     topicList["add"] = add
                     topicList["email"] = email
-                    topicList["password"] = password
+                   // topicList["password"] = password
                     topicList["city"] = city.toString()
                     topicList["phoneno"] = phoneno
                     topicList["username"]=username
 
 
-                    dbNgo.collection("NGO")
+                   dbNgo.collection("NGO")
                         .add(topicList)
                         .addOnSuccessListener {
                             Toast.makeText(requireContext(),"Record Inserted Successfully", Toast.LENGTH_LONG).show()
