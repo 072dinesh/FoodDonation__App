@@ -5,11 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fooddonationapp.R
 import com.example.fooddonationapp.databinding.FragmentOnBoardingBinding
 import com.example.fooddonationapp.databinding.FragmentRecentDonorTabBinding
 import com.example.fooddonationapp.model.Request
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import okhttp3.internal.userAgent
 import timber.log.Timber
@@ -21,6 +23,8 @@ class RecentDonorTabFragment : Fragment() {
     private lateinit var requestArrayList : ArrayList<Request>
     private lateinit var recentDonorAdapter : RecentDonorTabAdapter
     private lateinit var db : FirebaseFirestore
+    private lateinit var topicList: MutableMap<String, Any>
+    lateinit var auth: FirebaseAuth
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,8 +34,8 @@ class RecentDonorTabFragment : Fragment() {
         db = FirebaseFirestore.getInstance()
         binding.donorRecentRecycler.layoutManager = LinearLayoutManager(requireContext())
         requestArrayList = arrayListOf()
-
-
+        topicList = HashMap()
+        auth = FirebaseAuth.getInstance()
         recentList()
         binding.donorRecentRecycler.setHasFixedSize(true)
         return binding.root
@@ -44,11 +48,35 @@ private fun recentList(){
                 val request : Request? = data.toObject(Request::class.java)
                 if (request != null){
 
-                    requestArrayList.add(request)
+                    if (request.status == "Pending")
+                    {
+                        requestArrayList.add(request)
+                    }
+
                     Timber.e("${requestArrayList.size.toString()}")
                 }
             }
-            recentDonorAdapter = RecentDonorTabAdapter()
+            recentDonorAdapter = RecentDonorTabAdapter(onBtnClick = {
+                it.id.let {id->
+                    db.collection("Request").get().addOnSuccessListener {documents->
+
+                        for (document in documents){
+                            if (id.equals(document.get("id").toString())){
+                                topicList["status"]="Approve"
+                                topicList["acceptbyemail"]=auth.currentUser?.email.toString()
+                                db.collection("Request").document(document.id).update(topicList)
+                                    .addOnSuccessListener {
+                                        Toast.makeText(requireContext(),"Approve",Toast.LENGTH_LONG).show()
+                                    }
+                            }
+
+
+
+                        }
+                    }
+                }
+
+            })
             binding.donorRecentRecycler.adapter = recentDonorAdapter
             recentDonorAdapter.setData(requestArrayList)
 

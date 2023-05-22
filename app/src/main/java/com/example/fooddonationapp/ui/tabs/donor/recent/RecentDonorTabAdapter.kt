@@ -10,15 +10,19 @@ import com.example.fooddonationapp.databinding.NgoItemHistoryListBinding
 import com.example.fooddonationapp.model.Request
 import com.example.fooddonationapp.utils.DiffUtilExt
 
-class RecentDonorTabAdapter : RecyclerView.Adapter<RecentDonorTabAdapter.MyViewHolder>() {
+class RecentDonorTabAdapter(val onBtnClick : (Request)-> Unit) : RecyclerView.Adapter<RecentDonorTabAdapter.MyViewHolder>() {
     private var requestList = emptyList<Request>()
     class MyViewHolder(private val binding : ListDonorRecentBinding):RecyclerView.ViewHolder(binding.root) {
-        fun bind(currentItem : Request){
+        fun bind(currentItem : Request,
+        onBtnClick: (Request)-> Unit){
            binding.requestData=currentItem
             binding.tvListRecentDonorNgoName.text = itemView.context.getString(R.string.request_from_format,currentItem.ngoname)
             binding.tvListRecentDonorQuantity.text = itemView.context.getString(R.string.request_quantity_format,currentItem.quantity)
             binding.tvListRecentDonorLocation.text = itemView.context.getString(R.string.request_location_format,currentItem.location)
             binding.tvListRecentDonorNgoPhone.text = itemView.context.getString(R.string.request_phone_format,currentItem.phoneno)
+            binding.button2.setOnClickListener {
+                onBtnClick(currentItem)
+            }
         }
         companion object{
             fun from(parent: ViewGroup) : MyViewHolder{
@@ -41,7 +45,7 @@ class RecentDonorTabAdapter : RecyclerView.Adapter<RecentDonorTabAdapter.MyViewH
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentItem = requestList.getOrNull(position)
         currentItem?.let {
-            holder.bind(it)
+            holder.bind(it,onBtnClick)
         }
     }
 
