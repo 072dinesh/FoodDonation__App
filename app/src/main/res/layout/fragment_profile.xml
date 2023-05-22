@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="50dp"
                 android:text="@string/edit_profile"
-                android:textColor="#301934"
+                android:textColor="?attr/colorOnPrimaryContainer"
                 android:textSize="25sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@id/cardview1"
@@ -68,15 +68,15 @@
                 android:layout_marginTop="10dp"
                 />
 
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardView"
+            style="@style/Card_Form"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="40dp"
             android:layout_marginBottom="20dp"
-            app:cardBackgroundColor="#F4F6FE"
-            app:cardCornerRadius="30dp"
             app:cardElevation="5dp"
+            android:layout_marginHorizontal="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -98,10 +98,10 @@
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
                 android:hint="@string/name"
-                app:boxStrokeColor="@color/purple_1"
+                app:boxStrokeColor="?attr/colorPrimary"
                 app:endIconMode="clear_text"
                 app:hintAnimationEnabled="true"
-                app:hintTextColor="@color/purple_1"
+                app:hintTextColor="?attr/colorPrimary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -113,7 +113,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
-                    android:textColor="@color/purple_1"
+                    android:textColor="?attr/colorPrimary"
                     android:textCursorDrawable="@drawable/cursarcolor"
                     tools:ignore="DuplicateClickableBoundsCheck" />
 
@@ -129,17 +129,17 @@
                 app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
                 app:layout_constraintStart_toStartOf="@+id/textInputLayout"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
-                app:smsp_floatingLabelColor="@color/purple_black"
-                app:smsp_outlinedBoxColor="@color/purple_black"
+                app:smsp_floatingLabelColor="?attr/colorPrimary"
+                app:smsp_outlinedBoxColor="?attr/colorPrimary"
                 app:smsp_floatingLabelText="select city"
                 app:smsp_hint="@string/select_city"
-                app:smsp_hintColor="@color/purple_black"
-                app:smsp_itemColor="#512DA8"
-                app:smsp_itemListColor="#7C4DFF"
-                app:smsp_itemListHintBackgroundColor="#808080"
-                app:smsp_itemListHintColor="#FFFFFF"
+                app:smsp_hintColor="?attr/colorPrimary"
+                app:smsp_itemColor="?attr/colorPrimary"
+                app:smsp_itemListColor="?attr/colorPrimary"
+                app:smsp_itemListHintBackgroundColor="?attr/colorPrimary"
+                app:smsp_itemListHintColor="?attr/colorPrimary"
                 app:smsp_multilineError="false"
-                app:smsp_selectedItemListColor="#5297FF" />
+                app:smsp_selectedItemListColor="?attr/colorPrimary" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout3"
@@ -148,11 +148,11 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
                 android:hint="@string/enter_email"
-                app:boxStrokeColor="@color/purple_1"
+                app:boxStrokeColor="?attr/colorPrimary"
                 app:endIconMode="clear_text"
                 app:hintAnimationEnabled="true"
                 android:enabled="false"
-                app:hintTextColor="@color/purple_1"
+                app:hintTextColor="?attr/colorPrimary"
                 app:layout_constraintEnd_toEndOf="@+id/spinner"
                 app:layout_constraintStart_toStartOf="@+id/spinner"
                 app:layout_constraintTop_toBottomOf="@+id/spinner">
@@ -163,7 +163,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="text"
                     android:editable="false"
-                    android:textColor="@color/purple_1"
+                    android:textColor="?attr/colorPrimary"
                     android:textCursorDrawable="@drawable/cursarcolor" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -174,10 +174,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
                 android:hint="@string/enter_phone_no"
-                app:boxStrokeColor="@color/purple_1"
+                app:boxStrokeColor="?attr/colorPrimary"
                 app:endIconMode="clear_text"
                 app:hintAnimationEnabled="true"
-                app:hintTextColor="@color/purple_1"
+                app:hintTextColor="?attr/colorPrimary"
                 app:layout_constraintEnd_toEndOf="@+id/textInputLayout3"
                 app:layout_constraintStart_toStartOf="@+id/textInputLayout3"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
@@ -187,7 +187,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
-                    android:textColor="@color/purple_1"
+                    android:textColor="?attr/colorPrimary"
                     android:textCursorDrawable="@drawable/cursarcolor" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -198,10 +198,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
                 android:hint="@string/enter_address"
-                app:boxStrokeColor="@color/purple_1"
+                app:boxStrokeColor="?attr/colorPrimary"
                 app:endIconMode="clear_text"
                 app:hintAnimationEnabled="true"
-                app:hintTextColor="@color/purple_1"
+                app:hintTextColor="?attr/colorPrimary"
                 app:layout_constraintEnd_toEndOf="@+id/textInputLayout4"
                 app:layout_constraintStart_toStartOf="@+id/textInputLayout4"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout4">
@@ -211,7 +211,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
-                    android:textColor="@color/purple_1"
+                    android:textColor="?attr/colorPrimary"
                     android:textCursorDrawable="@drawable/cursarcolor"
                     tools:ignore="SpeakableTextPresentCheck" />
 
@@ -226,7 +226,7 @@
                 android:text="@string/Save"
                 android:textAlignment="center"
                 android:textAllCaps="false"
-                android:textColor="@color/white"
+                android:textColor="@color/md_theme_light_background"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:cornerRadius="30dp"
@@ -240,7 +240,7 @@
 
 
            </androidx.constraintlayout.widget.ConstraintLayout>
-          </androidx.cardview.widget.CardView>
+          </com.google.android.material.card.MaterialCardView>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 </layout>

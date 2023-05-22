@@ -11,7 +11,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/md_theme_light_background"
     android:paddingBottom="40dp"
 
     tools:context=".ui.auth.login.LoginFragment">
@@ -33,15 +33,14 @@
 
     </TextView>
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardView"
+        style="@style/Card_Form"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="50dp"
-        app:cardBackgroundColor="#F4F6FE"
-        app:cardCornerRadius="30dp"
         android:layout_marginBottom="20dp"
         app:cardElevation="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -63,10 +62,10 @@
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
                 android:hint="Enter email"
-                app:boxStrokeColor="@color/purple_1"
+                app:boxStrokeColor="?attr/colorPrimary"
                 app:endIconMode="clear_text"
                 app:hintAnimationEnabled="true"
-                app:hintTextColor="@color/purple_1"
+                app:hintTextColor="?attr/colorPrimary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -76,7 +75,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
-                    android:textColor="@color/purple_1"
+                    android:textColor="?attr/colorPrimary"
                     android:textCursorDrawable="@drawable/cursarcolor" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -88,10 +87,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
                 android:hint="Enter password"
-                app:boxStrokeColor="@color/purple_1"
+                app:boxStrokeColor="?attr/colorPrimary"
                 app:endIconMode="password_toggle"
                 app:hintAnimationEnabled="true"
-                app:hintTextColor="@color/purple_1"
+                app:hintTextColor="?attr/colorPrimary"
                 app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
                 app:layout_constraintStart_toStartOf="@+id/textInputLayout"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
@@ -101,7 +100,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
-                    android:textColor="@color/purple_1"
+                    android:textColor="?attr/colorPrimary"
                     android:textCursorDrawable="@drawable/cursarcolor" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -115,7 +114,7 @@
                 android:text="@string/login"
                 android:textAlignment="center"
                 android:textAllCaps="false"
-                android:textColor="@color/white"
+                android:textColor="@color/md_theme_light_background"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:cornerRadius="30dp"
@@ -128,7 +127,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
     <ImageView
         android:id="@+id/imageView"
@@ -149,7 +148,7 @@
         android:layout_marginTop="20dp"
         android:gravity="center"
         android:text="@string/signup"
-        android:textColor="@color/purple_black"
+        android:textColor="?attr/colorOnPrimaryContainer"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/cardView"

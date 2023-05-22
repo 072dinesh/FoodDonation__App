@@ -6,6 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="20dp"
     android:layout_marginHorizontal="20dp"
+    app:strokeColor="?attr/colorPrimary"
     style="@style/Card_Form">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -38,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="@string/request_quantity_format"
-            android:textColor="@color/purple_1"
+            android:textColor="?attr/colorPrimary"
             android:fontFamily="@font/cherry_swash"
             android:textSize="18sp"
             android:lineHeight="26sp"
@@ -52,7 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="@string/request_location_format"
-            android:textColor="@color/purple_1"
+            android:textColor="?attr/colorPrimary"
             android:fontFamily="@font/cherry_swash"
             android:textSize="18sp"
             android:lineHeight="26sp"
@@ -66,7 +67,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="@string/request_phone_format"
-            android:textColor="@color/purple_1"
+            android:textColor="?attr/colorPrimary"
             android:fontFamily="@font/cherry_swash"
             android:textSize="18sp"
             android:lineHeight="26sp"

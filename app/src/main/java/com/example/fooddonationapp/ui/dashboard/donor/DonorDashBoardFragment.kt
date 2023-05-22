@@ -38,21 +38,21 @@ class DonorDashBoardFragment : Fragment() {
     private fun setUpUi(){
 
         binding.vpDonorDashBoard.adapter = DonorDashBoardPagerAdapter(this)
-        binding.btnDashBoardDonorRecentTab.setTextColor(ContextCompat.getColor(requireContext(),R.color.purple_light))
+        binding.btnDashBoardDonorRecentTab.setTextColor(ContextCompat.getColor(requireContext(),R.color.md_theme_light_primaryContainer))
         binding.btnDashBoardDonorHistoryTab.setOnClickListener {
             binding.vpDonorDashBoard.currentItem = 1
             binding.btnDashBoardDonorRecentTab.setBackgroundResource(R.drawable.btn_not_press)
             binding.btnDashBoardDonorHistoryTab.setBackgroundResource(R.drawable.btn_press)
-            binding.btnDashBoardDonorHistoryTab.setTextColor(ContextCompat.getColor(requireContext(),R.color.purple_light))
-            binding.btnDashBoardDonorRecentTab.setTextColor(ContextCompat.getColor(requireContext(),R.color.purple_1))
+            binding.btnDashBoardDonorHistoryTab.setTextColor(ContextCompat.getColor(requireContext(),R.color.md_theme_light_primaryContainer))
+            binding.btnDashBoardDonorRecentTab.setTextColor(ContextCompat.getColor(requireContext(),R.color.md_theme_light_primary))
             binding.btnDashBoardDonorRecentTab.isSelected=false
         }
             binding.btnDashBoardDonorRecentTab.setOnClickListener {
             binding.vpDonorDashBoard.currentItem = 0
             binding.btnDashBoardDonorHistoryTab.setBackgroundResource(R.drawable.btn_not_press)
             binding.btnDashBoardDonorRecentTab.setBackgroundResource(R.drawable.btn_press)
-            binding.btnDashBoardDonorRecentTab.setTextColor(ContextCompat.getColor(requireContext(),R.color.purple_light))
-            binding.btnDashBoardDonorHistoryTab.setTextColor(ContextCompat.getColor(requireContext(),R.color.purple_1))
+            binding.btnDashBoardDonorRecentTab.setTextColor(ContextCompat.getColor(requireContext(),R.color.md_theme_light_primaryContainer))
+            binding.btnDashBoardDonorHistoryTab.setTextColor(ContextCompat.getColor(requireContext(),R.color.md_theme_light_primary))
             binding.btnDashBoardDonorHistoryTab.isSelected=false
         }
 
@@ -65,15 +65,15 @@ class DonorDashBoardFragment : Fragment() {
                     binding.btnDashBoardDonorHistoryTab.isSelected = false
                     binding.btnDashBoardDonorHistoryTab.setBackgroundResource(R.drawable.btn_not_press)
                     binding.btnDashBoardDonorRecentTab.setBackgroundResource(R.drawable.btn_press)
-                    binding.btnDashBoardDonorHistoryTab.setTextColor(ContextCompat.getColor(requireContext(), R.color.purple_light))
-                    binding.btnDashBoardDonorHistoryTab.setTextColor(ContextCompat.getColor(requireContext(), R.color.purple_1))
+                    binding.btnDashBoardDonorHistoryTab.setTextColor(ContextCompat.getColor(requireContext(), R.color.md_theme_light_primaryContainer))
+                    binding.btnDashBoardDonorHistoryTab.setTextColor(ContextCompat.getColor(requireContext(), R.color.md_theme_light_primary))
                 }
                 else{
                     binding.btnDashBoardDonorRecentTab.isSelected = false
                     binding.btnDashBoardDonorRecentTab.setBackgroundResource(R.drawable.btn_not_press)
                     binding.btnDashBoardDonorHistoryTab.setBackgroundResource(R.drawable.btn_press)
-                    binding.btnDashBoardDonorRecentTab.setTextColor(ContextCompat.getColor(requireContext(), R.color.purple_light))
-                    binding.btnDashBoardDonorRecentTab.setTextColor(ContextCompat.getColor(requireContext(), R.color.purple_1))
+                    binding.btnDashBoardDonorRecentTab.setTextColor(ContextCompat.getColor(requireContext(), R.color.md_theme_light_primaryContainer))
+                    binding.btnDashBoardDonorRecentTab.setTextColor(ContextCompat.getColor(requireContext(), R.color.md_theme_light_primary))
                 }
                 super.onPageSelected(position)
             }

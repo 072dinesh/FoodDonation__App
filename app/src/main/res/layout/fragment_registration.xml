@@ -17,7 +17,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/md_theme_light_background"
     tools:context=".ui.auth.registration.RegistrationFragment">
 
 
@@ -29,7 +29,7 @@
         android:fontFamily="@font/cherry_swash_bold"
         android:gravity="center"
         android:text="@string/registration"
-        android:textColor="@color/purple_black"
+        android:textColor="?attr/colorOnPrimaryContainer"
         android:textSize="25dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,15 +38,16 @@
 
     </TextView>
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
+        style="@style/Card_Form"
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
-        app:cardBackgroundColor="#F4F6FE"
         app:cardCornerRadius="30dp"
         app:cardElevation="5dp"
+        android:layout_marginHorizontal="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -67,10 +68,10 @@
                 android:layout_marginEnd="15dp"
                 android:hint="Enter name"
 
-                app:boxStrokeColor="@color/purple_1"
+                app:boxStrokeColor="?attr/colorPrimary"
                 app:endIconMode="clear_text"
                 app:hintAnimationEnabled="true"
-                app:hintTextColor="@color/purple_1"
+                app:hintTextColor="?attr/colorPrimary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/radioGroup">
@@ -81,7 +82,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="text"
                     android:text="@={variable.username}"
-                    android:textColor="@color/purple_1"
+                    android:textColor="?attr/colorPrimary"
                     android:textCursorDrawable="@drawable/cursarcolor" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -93,10 +94,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
                 android:hint="Enter email"
-                app:boxStrokeColor="@color/purple_1"
+                app:boxStrokeColor="?attr/colorPrimary"
                 app:endIconMode="clear_text"
                 app:hintAnimationEnabled="true"
-                app:hintTextColor="@color/purple_1"
+                app:hintTextColor="?attr/colorPrimary"
                 app:layout_constraintTop_toBottomOf="@+id/spinner"
                 tools:layout_editor_absoluteX="15dp">
 
@@ -106,7 +107,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="text"
                     android:text="@={variable.email}"
-                    android:textColor="@color/purple_1"
+                    android:textColor="?attr/colorPrimary"
                     android:textCursorDrawable="@drawable/cursarcolor" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -118,10 +119,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
                 android:hint="Enter password"
-                app:boxStrokeColor="@color/purple_1"
+                app:boxStrokeColor="?attr/colorPrimary"
                 app:endIconMode="clear_text"
                 app:hintAnimationEnabled="true"
-                app:hintTextColor="@color/purple_1"
+                app:hintTextColor="?attr/colorPrimary"
                 app:layout_constraintEnd_toEndOf="@+id/textInputLayout2"
                 app:layout_constraintStart_toStartOf="@+id/textInputLayout2"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
@@ -132,7 +133,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="text"
                     android:text="@={variable.password}"
-                    android:textColor="@color/purple_1"
+                    android:textColor="?attr/colorPrimary"
                     android:textCursorDrawable="@drawable/cursarcolor" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -145,11 +146,11 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
                 android:hint="Enter phone "
-                app:boxStrokeColor="@color/purple_1"
+                app:boxStrokeColor="?attr/colorPrimary"
                 app:endIconMode="clear_text"
 
                 app:hintAnimationEnabled="true"
-                app:hintTextColor="@color/purple_1"
+                app:hintTextColor="?attr/colorPrimary"
                 app:layout_constraintEnd_toEndOf="@+id/textInputLayout3"
                 app:layout_constraintStart_toStartOf="@+id/textInputLayout3"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
@@ -160,7 +161,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="text"
                     android:text="@={variable.phoneno}"
-                    android:textColor="@color/purple_1"
+                    android:textColor="?attr/colorPrimary"
                     android:textCursorDrawable="@drawable/cursarcolor" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -173,10 +174,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
                 android:hint="Enter address "
-                app:boxStrokeColor="@color/purple_1"
+                app:boxStrokeColor="?attr/colorPrimary"
                 app:endIconMode="clear_text"
                 app:hintAnimationEnabled="true"
-                app:hintTextColor="@color/purple_1"
+                app:hintTextColor="?attr/colorPrimary"
                 app:layout_constraintEnd_toEndOf="@+id/textInputLayout4"
                 app:layout_constraintStart_toStartOf="@+id/textInputLayout4"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout4">
@@ -189,7 +190,7 @@
                     android:inputType="text|textMultiLine"
                     android:gravity="top"
                     android:text="@={variable.add}"
-                    android:textColor="@color/purple_1"
+                    android:textColor="?attr/colorPrimary"
                     android:textCursorDrawable="@drawable/cursarcolor" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -203,7 +204,7 @@
                 android:text="@string/Continue"
                 android:textAlignment="center"
                 android:textAllCaps="false"
-                android:textColor="@color/white"
+                android:textColor="@color/md_theme_light_background"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:cornerRadius="30dp"
@@ -232,7 +233,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="10dp"
-                    android:buttonTint="@color/purple_black"
+                    android:buttonTint="?attr/colorOnPrimaryContainer"
                     android:text="@string/NGO"
 
                     app:layout_constraintEnd_toStartOf="@+id/materialRadioButton">
@@ -245,7 +246,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
                     android:text="@string/Donar"
-                    android:buttonTint="@color/purple_black"
+                    android:buttonTint="?attr/colorOnPrimaryContainer"
                     app:layout_constraintBottom_toBottomOf="@+id/RadioButtonNGO">
 
                 </com.google.android.material.radiobutton.MaterialRadioButton>
@@ -275,23 +276,23 @@
                 app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
                 app:layout_constraintStart_toStartOf="@+id/textInputLayout"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
-                app:smsp_floatingLabelColor="@color/purple_black"
-                app:smsp_outlinedBoxColor="@color/purple_black"
+                app:smsp_floatingLabelColor="?attr/colorPrimary"
+                app:smsp_outlinedBoxColor="?attr/colorPrimary"
                 app:smsp_floatingLabelText="select city"
                 app:smsp_hint="Select city"
-                app:smsp_hintColor="@color/purple_black"
-                app:smsp_itemColor="#512DA8"
-                app:smsp_itemListColor="#7C4DFF"
-                app:smsp_itemListHintBackgroundColor="#808080"
-                app:smsp_itemListHintColor="#FFFFFF"
+                app:smsp_hintColor="?attr/colorPrimary"
+                app:smsp_itemColor="?attr/colorPrimary"
+                app:smsp_itemListColor="?attr/colorPrimary"
+                app:smsp_itemListHintBackgroundColor="?attr/colorPrimary"
+                app:smsp_itemListHintColor="?attr/colorPrimary"
                 app:smsp_multilineError="false"
-                app:smsp_selectedItemListColor="#5297FF" />
+                app:smsp_selectedItemListColor="?attr/colorPrimary" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
     <ImageView
         android:id="@+id/imageView"

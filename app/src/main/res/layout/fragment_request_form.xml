@@ -46,6 +46,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:strokeColor="?attr/colorPrimary"
+        android:layout_marginHorizontal="10dp"
         app:layout_constraintTop_toBottomOf="@+id/textView3">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -72,7 +74,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
-                    android:textColor="@color/purple_1"
+                    android:textColor="?attr/colorPrimary"
                     android:textCursorDrawable="@drawable/cursarcolor" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -85,16 +87,16 @@
                 app:layout_constraintEnd_toEndOf="@+id/textInputLayout6"
                 app:layout_constraintStart_toStartOf="@+id/textInputLayout6"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout6"
-                app:smsp_floatingLabelColor="@color/purple_black"
+                app:smsp_floatingLabelColor="?attr/colorPrimary"
                 app:smsp_floatingLabelText="Select Location"
                 app:smsp_hint="Select city"
-                app:smsp_hintColor="@color/purple_black"
-                app:smsp_itemColor="#512DA8"
-                app:smsp_itemListColor="#7C4DFF"
-                app:smsp_itemListHintBackgroundColor="#808080"
-                app:smsp_itemListHintColor="#FFFFFF"
+                app:smsp_hintColor="?attr/colorPrimary"
+                app:smsp_itemColor="?attr/colorPrimary"
+                app:smsp_itemListColor="?attr/colorPrimary"
+                app:smsp_itemListHintBackgroundColor="?attr/colorPrimary"
+                app:smsp_itemListHintColor="?attr/colorPrimary"
                 app:smsp_multilineError="false"
-                app:smsp_outlinedBoxColor="@color/purple_black"
+                app:smsp_outlinedBoxColor="?attr/colorPrimary"
                 app:smsp_selectedItemListColor="#5297FF" />
 
 
@@ -131,7 +133,7 @@
                 android:text="@string/request"
                 android:textAlignment="center"
                 android:textAllCaps="false"
-                android:textColor="@color/white"
+                android:textColor="@color/md_theme_light_background"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:cornerRadius="30dp"

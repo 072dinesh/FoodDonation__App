@@ -1,15 +1,11 @@
 package com.example.fooddonationapp.ui.profile
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Spinner
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.fooddonationapp.databinding.FragmentProfileBinding
 import com.example.fooddonationapp.utils.PrefManager
@@ -86,100 +82,15 @@ class ProfileFragment : Fragment() {
     private fun updateUser() {
 
         Timber.e(data.toString())
-        var email = auth.currentUser?.email.toString()
+
         if (data.toString() == "Donor") {
             //navController.navigate(R.id.donorDashBoardFragment)
-            db.collection("Donar").get().addOnSuccessListener { documents ->
-                for (document in documents) {
-                    var donoremail = document.get("email").toString()
-                    if (email.equals(donoremail)) {
-                        Timber.e(document.get("username").toString())
-                        binding.editAdd.setText(document.get("add").toString())
-                        binding.username.setText(document.get("username").toString())
-                        binding.editPassword.setText(document.get("email").toString())
-                        binding.editPhoneno.setText(document.get("phoneno").toString())
-                        for (city in types) {
-                            Timber.e(city.toString())
-                            Timber.e(document.get("city").toString())
-                            if (city.equals(document.get("city").toString())) {
-                                binding.spinner.setSelection(types.indexOf(city))
-                                Timber.e(types.indexOf(city).toString())
-                            }
-                        }
-
-                        getAndSetData()
-                        binding.btncontinue.setOnClickListener {
-                            getAndSetData()
-                            db.collection("Donar").document(document.id).update(topicList)
-                                .addOnSuccessListener {
-                                    Toast.makeText(
-                                        requireContext(),
-                                        "Update Success",
-                                        Toast.LENGTH_LONG
-                                    ).show()
-                                }.addOnFailureListener {
-                                    Toast.makeText(
-                                        requireContext(),
-                                        "Not Updated ",
-                                        Toast.LENGTH_LONG
-                                    ).show()
-                                }
-                        }
-
-
-                    }
-                }
-
-            }
+            getDocument("Donar")
 
         }
 
         if (data.toString() == "Ngo") {
-
-            //navController.navigate(R.id.ngoDashBoardFragment)
-            db.collection("NGO").get().addOnSuccessListener { documents ->
-                for (document in documents) {
-                    var donoremail = document.get("email").toString()
-                    if (email.equals(donoremail)) {
-                        Timber.e(document.get("username").toString())
-                        binding.editAdd.setText(document.get("add").toString())
-                        binding.username.setText(document.get("username").toString())
-                        binding.editPassword.setText(document.get("email").toString())
-                        binding.editPhoneno.setText(document.get("phoneno").toString())
-                        for (city in types) {
-                            Timber.e(city.toString())
-                            Timber.e(document.get("city").toString())
-                            if (city.equals(document.get("city").toString())) {
-                                binding.spinner.setSelection(types.indexOf(city))
-                                Timber.e(types.indexOf(city).toString())
-                            }
-                        }
-
-                            getAndSetData()
-                        binding.btncontinue.setOnClickListener {
-                            getAndSetData()
-                            db.collection("NGO").document(document.id).update(topicList)
-                                .addOnSuccessListener {
-                                    Toast.makeText(
-                                        requireContext(),
-                                        "Update Success",
-                                        Toast.LENGTH_LONG
-                                    ).show()
-                                }.addOnFailureListener {
-                                    Toast.makeText(
-                                        requireContext(),
-                                        "Not Updated ",
-                                        Toast.LENGTH_LONG
-                                    ).show()
-                                }
-                        }
-                    }
-
-                }
-
-            }
-            // var id=databaseReferenceDonar.push().key.toString()
-
+            getDocument("NGO")
 
         }
 
@@ -191,7 +102,8 @@ class ProfileFragment : Fragment() {
         }
 
     }
-    private fun getAndSetData(){
+
+    private fun getAndSetData() {
         val add = binding.editAdd.text.toString()
         val city = a
         val username = binding.username.text.toString()
@@ -206,5 +118,52 @@ class ProfileFragment : Fragment() {
         topicList["city"] = city.toString()
         topicList["phoneno"] = phone
         topicList["username"] = username.toString()
+    }
+
+    private fun getDocument(dataBaseName: String) {
+        db.collection(dataBaseName).get().addOnSuccessListener { documents ->
+            for (document in documents) {
+                var email = auth.currentUser?.email.toString()
+                var donoremail = document.get("email").toString()
+                if (email.equals(donoremail)) {
+                    Timber.e(document.get("username").toString())
+                    binding.editAdd.setText(document.get("add").toString())
+                    binding.username.setText(document.get("username").toString())
+                    binding.editPassword.setText(document.get("email").toString())
+                    binding.editPhoneno.setText(document.get("phoneno").toString())
+                    for (city in types) {
+                        Timber.e(city.toString())
+                        Timber.e(document.get("city").toString())
+                        if (city.equals(document.get("city").toString())) {
+                            binding.spinner.setSelection(types.indexOf(city))
+                            Timber.e(types.indexOf(city).toString())
+                        }
+                    }
+
+                    getAndSetData()
+                    binding.btncontinue.setOnClickListener {
+                        getAndSetData()
+                        db.collection(dataBaseName).document(document.id).update(topicList)
+                            .addOnSuccessListener {
+                                Toast.makeText(
+                                    requireContext(),
+                                    "Update Success",
+                                    Toast.LENGTH_LONG
+                                ).show()
+                            }.addOnFailureListener {
+                                Toast.makeText(
+                                    requireContext(),
+                                    "Not Updated ",
+                                    Toast.LENGTH_LONG
+                                ).show()
+                            }
+                    }
+
+
+                }
+            }
+
+        }
+
     }
 }

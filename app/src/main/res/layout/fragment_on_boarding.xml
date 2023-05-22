@@ -41,7 +41,7 @@
         android:layout_marginBottom="30dp"
         android:text="@string/continue1"
         android:textAlignment="center"
-        android:textColor="@color/white"
+        android:textColor="@color/md_theme_light_background"
         android:textStyle="bold"
         app:cornerRadius="30dp"
         android:paddingVertical="17dp"

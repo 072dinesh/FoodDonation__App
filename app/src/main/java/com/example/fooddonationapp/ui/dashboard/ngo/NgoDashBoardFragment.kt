@@ -116,13 +116,13 @@ private  var _binding : FragmentNgoDashBoardBinding ? = null
 
         binding.vpNgoDashBoard.adapter = NgoDashBoardPagerAdapter(this)
 
-            binding.btnDashBoardNgoRecentTab.setTextColor(ContextCompat.getColor(requireContext(), R.color.purple_light))
+            binding.btnDashBoardNgoRecentTab.setTextColor(ContextCompat.getColor(requireContext(), R.color.md_theme_light_primaryContainer))
             binding.btnDashBoardNgoHistoryTab.setOnClickListener {
             binding.vpNgoDashBoard.currentItem = 1
             binding.btnDashBoardNgoRecentTab.setBackgroundResource(R.drawable.btn_not_press)
             binding.btnDashBoardNgoHistoryTab.setBackgroundResource(R.drawable.btn_press)
-            binding.btnDashBoardNgoHistoryTab.setTextColor(ContextCompat.getColor(requireContext(), R.color.purple_light))
-                binding.btnDashBoardNgoRecentTab.setTextColor(ContextCompat.getColor(requireContext(), R.color.purple_1))
+            binding.btnDashBoardNgoHistoryTab.setTextColor(ContextCompat.getColor(requireContext(), R.color.md_theme_light_primaryContainer))
+                binding.btnDashBoardNgoRecentTab.setTextColor(ContextCompat.getColor(requireContext(), R.color.md_theme_light_primary))
             binding.btnDashBoardNgoRecentTab.isSelected = false
 
 
@@ -132,8 +132,8 @@ private  var _binding : FragmentNgoDashBoardBinding ? = null
 
             binding.btnDashBoardNgoHistoryTab.setBackgroundResource(R.drawable.btn_not_press)
             binding.btnDashBoardNgoRecentTab.setBackgroundResource(R.drawable.btn_press)
-            binding.btnDashBoardNgoRecentTab.setTextColor(ContextCompat.getColor(requireContext(), R.color.purple_light))
-            binding.btnDashBoardNgoHistoryTab.setTextColor(ContextCompat.getColor(requireContext(), R.color.purple_1))
+            binding.btnDashBoardNgoRecentTab.setTextColor(ContextCompat.getColor(requireContext(), R.color.md_theme_light_primaryContainer))
+            binding.btnDashBoardNgoHistoryTab.setTextColor(ContextCompat.getColor(requireContext(), R.color.md_theme_light_primary))
             binding.btnDashBoardNgoHistoryTab.isSelected = false
 
         }
@@ -149,15 +149,17 @@ private  var _binding : FragmentNgoDashBoardBinding ? = null
                     binding.btnDashBoardNgoRecentTab.setTextColor(
                         ContextCompat.getColor(
                             requireContext(),
-                            R.color.purple_light
+                            R.color.md_theme_light_primary
                         )
                     )
                     binding.btnDashBoardNgoHistoryTab.setTextColor(
                         ContextCompat.getColor(
                             requireContext(),
-                            R.color.purple_1
+                            R.color.md_theme_light_primaryContainer
                         )
                     )
+                    binding.btnDashBoardNgoRecentTab.setTextColor(ContextCompat.getColor(requireContext(), R.color.md_theme_light_primaryContainer))
+                    binding.btnDashBoardNgoHistoryTab.setTextColor(ContextCompat.getColor(requireContext(), R.color.md_theme_light_primary))
 
 
                 }
@@ -165,8 +167,8 @@ private  var _binding : FragmentNgoDashBoardBinding ? = null
                     binding.btnDashBoardNgoRecentTab.isSelected = false
                     binding.btnDashBoardNgoRecentTab.setBackgroundResource(R.drawable.btn_not_press)
                     binding.btnDashBoardNgoHistoryTab.setBackgroundResource(R.drawable.btn_press)
-                    binding.btnDashBoardNgoHistoryTab.setTextColor(ContextCompat.getColor(requireContext(), R.color.purple_light))
-                    binding.btnDashBoardNgoRecentTab.setTextColor(ContextCompat.getColor(requireContext(), R.color.purple_1))
+                    binding.btnDashBoardNgoHistoryTab.setTextColor(ContextCompat.getColor(requireContext(), R.color.md_theme_light_primaryContainer))
+                    binding.btnDashBoardNgoRecentTab.setTextColor(ContextCompat.getColor(requireContext(), R.color.md_theme_light_primary))
 
 
                 }
