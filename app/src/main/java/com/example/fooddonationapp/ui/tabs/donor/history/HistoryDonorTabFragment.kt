@@ -5,56 +5,65 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fooddonationapp.R
+import com.example.fooddonationapp.databinding.FragmentHistoryDonorTabBinding
+import com.example.fooddonationapp.databinding.FragmentRequestFormBinding
+import com.example.fooddonationapp.model.Request
+import com.example.fooddonationapp.ui.tabs.ngo.history.HisoryNgoTabAdapter
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [HistoryDonorTabFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class HistoryDonorTabFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
-
+    private var _binding: FragmentHistoryDonorTabBinding? = null
+    private val binding get() = _binding!!
+    private lateinit var userArrayList: ArrayList<Request>
+    private lateinit var myAdapter : HistoryDonorTabAdapter
+    private lateinit var db : FirebaseFirestore
+    lateinit var auth: FirebaseAuth
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_history_donor_tab, container, false)
-    }
+        _binding = FragmentHistoryDonorTabBinding.inflate(inflater,container,false)
+        db = FirebaseFirestore.getInstance()
+        binding.recyclerview.layoutManager = LinearLayoutManager(requireContext())
+        userArrayList = arrayListOf()
+        auth= FirebaseAuth.getInstance()
+        EventChangeListerner()
+        binding.recyclerview.setHasFixedSize(true)
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment HistoryDonorTabFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HistoryDonorTabFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+       return binding.root
+    }
+    fun EventChangeListerner()
+    {
+        db.collection("Request").orderBy("date", Query.Direction.DESCENDING)
+            .get().addOnSuccessListener {
+
+                if (!it.isEmpty){
+
+                    for(data in it.documents)
+                    {
+                        if (data.get("acceptbyemail").toString()==auth.currentUser?.email.toString()){
+
+                            val request : Request? = data.toObject(Request::class.java)
+                            if (request != null){
+                                userArrayList.add(request)
+                            }
+                        }
+
+                    }
+                    myAdapter = HistoryDonorTabAdapter()
+                    binding.recyclerview.adapter = myAdapter
+                    // binding.recyclerview.adapter = HisoryNgoTabAdapter()
+                    myAdapter.setData(userArrayList)
+
                 }
+
+
             }
     }
+
 }

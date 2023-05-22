@@ -85,47 +85,48 @@ class RequestFormFragment : Fragment() {
 
 
     private fun requestNGO(){
-        topicList = HashMap()
+        var quantity = binding.etFormQuantity.text.toString()
+        var location = spinnervalue.toString()
 
+        val a = DateTimeFormatter.ofPattern("HH:mm")
+        val currenttime = LocalDateTime.now().format(a)
+
+        val dateTime = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+        val currentdate = LocalDateTime.now().format(dateTime)
         var ngoname:String?=null
-        dbNgo.collection("NGO").orderBy("time",Query.Direction.DESCENDING).get()
+
+
+        dbNgo.collection("NGO").get()
             .addOnSuccessListener {documents ->
 
                 for (document in documents ){
-                    if (document.get("email").toString()==auth.currentUser?.email.toString())
+                    var email = auth.currentUser?.email.toString()
+                    var ngoemail = document.get("email").toString()
+                    if (email.equals(ngoemail))
                     {
-                        Timber.e(document.get("username").toString())
-                        topicList["username"] = document.get("username").toString()
+                        topicList = HashMap()
+                        topicList["ngoname"] = document.get("username").toString()
                         topicList["phoneno"] = document.get("phoneno").toString()
+                        topicList["location"] = location
+                        topicList["quantity"] = quantity
+                        topicList["time"] = currenttime
+                        topicList["ngoemail"] = auth.currentUser?.email.toString()
+                        topicList["status"] = "Pending"
+                        topicList["acceptbyname"] =""
+                        topicList["acceptbyemail"]=""
+                        topicList["date"]=currentdate
+
+                        dbNgo.collection("Request")
+                            .add(topicList)
+                            .addOnSuccessListener {
+
+                            }
                     }
                 }
-                var quantity = binding.etFormQuantity.text.toString()
-                var location = spinnervalue.toString()
-                val a = DateTimeFormatter.ofPattern("HH:mm")
-                val currenttime = LocalDateTime.now().format(a)
 
-                val dateTime = DateTimeFormatter.ofPattern("yyyy-MM-dd")
-                val currentdate = LocalDateTime.now().format(dateTime)
 
                 //val time = binding.timePicker.minute
 
-                topicList["location"] = location
-
-                topicList["quantity"] = quantity
-
-                topicList["time"] = currenttime
-                topicList["ngoemail"] = auth.currentUser?.email.toString()
-                topicList["status"] = "Pending"
-                topicList["acceptbyname"] =""
-                topicList["acceptbyemail"]=""
-                topicList["date"]=currentdate
-
-
-                dbNgo.collection("Request")
-                    .add(topicList)
-                    .addOnSuccessListener {
-
-                    }
             }
 
 

@@ -11,6 +11,7 @@ import com.example.fooddonationapp.databinding.FragmentHistoryNgoTabBinding
 import com.example.fooddonationapp.databinding.FragmentRequestFormBinding
 import com.example.fooddonationapp.model.Donor
 import com.example.fooddonationapp.model.Request
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.*
 import timber.log.Timber
 
@@ -21,6 +22,8 @@ class HistoryNgoTabFragment : Fragment() {
     private lateinit var userArrayList: ArrayList<Request>
     private lateinit var myAdapter : HisoryNgoTabAdapter
     private lateinit var db :FirebaseFirestore
+
+    lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,18 +45,23 @@ class HistoryNgoTabFragment : Fragment() {
 
 
     private fun EventChangeListerner(){
+
+
         db.collection("Request").orderBy("date",Query.Direction.DESCENDING)
             .get().addOnSuccessListener {
 
                 if (!it.isEmpty){
 
+
                         for(data in it.documents)
                         {
-                            val request : Request? = data.toObject(Request::class.java)
-                            if (request != null){
-                                userArrayList.add(request)
-                            }
+                                      val request : Request? = data.toObject(Request::class.java)
+                                if (request != null){
+                                    userArrayList.add(request)
+                                }
+
                         }
+
                     myAdapter = HisoryNgoTabAdapter()
                     binding.recyclerview.adapter = myAdapter
                    // binding.recyclerview.adapter = HisoryNgoTabAdapter()
@@ -63,29 +71,6 @@ class HistoryNgoTabFragment : Fragment() {
 
 
         }
-//            .addSnapshotListener(object : EventListener<QuerySnapshot> {
-//                override fun onEvent(
-//                    value: QuerySnapshot?,
-//                    error: FirebaseFirestoreException?
-//                ) {
-//                    if(error != null){
-//                            Timber.e(error.message)
-//                    }
-//                    for (dv : DocumentChange in value?.documentChanges!!)
-//                    {
-//                        if(dv.type == DocumentChange.Type.ADDED)
-//                        {
-//                            var a = dv.document.toObject(Request::class.java)
-//                             userArrayList.add(a)
-//
-//                        }
-//                    }
-//                    myAdapter = HisoryNgoTabAdapter()
-//                    binding.recyclerview.adapter = myAdapter
-//                    myAdapter.setData(userArrayList)
-//
-//                }
-//            })
 
     }
 

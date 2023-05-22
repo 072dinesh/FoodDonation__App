@@ -39,5 +39,12 @@
     <string name="date">Date <b>%1$s</b></string>
     <string name="location_ngo">Location <b>%1$s</b></string>
 
+
+    <string name="ngo_name">NGO Name <b> %1$s</b></string>
+    <string name="ngo_phone_number">NGO Phone Number <b>%1$s</b> </string>
+    <string name="donation_accepted_date">Date of Donation Accepted <b>%1$s</b></string>
+    <string name="Donated_food_quantity">Donated Food Quantity <b>%1$s</b></string>
+    <string name="Location_donor">Location <b>%1$s</b></string>
+
     <string name="enter_email">Enter Email</string>
 </resources>

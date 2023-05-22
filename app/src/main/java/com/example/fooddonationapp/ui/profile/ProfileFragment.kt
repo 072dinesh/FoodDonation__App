@@ -67,10 +67,6 @@ class ProfileFragment : Fragment() {
             ) {
 
                 a = types[position]
-
-                //textView.text = text
-//                textView.text = text
-                //getString(R.string.selected_item) + " " + "" + types[position],Toast.LENGTH_SHORT).show()
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -110,11 +106,8 @@ class ProfileFragment : Fragment() {
         val phone = binding.editPhoneno.text.toString()
         val emaill = binding.editPassword.text.toString()
         topicList = HashMap()
-
-//                    topicList["id"] = id
         topicList["add"] = add
         topicList["email"] = emaill
-        //topicList["password"] = password
         topicList["city"] = city.toString()
         topicList["phoneno"] = phone
         topicList["username"] = username.toString()

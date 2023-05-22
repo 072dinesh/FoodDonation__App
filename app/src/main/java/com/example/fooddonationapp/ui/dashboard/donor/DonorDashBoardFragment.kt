@@ -15,6 +15,7 @@ import com.example.fooddonationapp.databinding.FragmentDonorDashBoardBinding
 import com.example.fooddonationapp.model.Donor
 import com.example.fooddonationapp.utils.PrefManager
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import timber.log.Timber
 
 
@@ -23,6 +24,8 @@ class DonorDashBoardFragment : Fragment() {
     private val binding get() = _binding!!
     private val tabTitle = arrayListOf("Recent","History")
     lateinit var auth: FirebaseAuth
+    var emaildonor : String?=null
+    private lateinit var dbdonar : FirebaseFirestore
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,13 +33,34 @@ class DonorDashBoardFragment : Fragment() {
         _binding = FragmentDonorDashBoardBinding.inflate(inflater,container,false)
         auth= FirebaseAuth.getInstance()
         Timber.e(auth.currentUser?.email.toString())
+
+        dbdonar = FirebaseFirestore.getInstance()
         setUpUi()
         setonclick()
         return binding.root
     }
 
     private fun setUpUi(){
+        var data =  PrefManager.getString(PrefManager.ACCESS_TOKEN)
+        if (data.toString() == "Donor"){
 
+            dbdonar.collection("Donar").get().addOnSuccessListener {documents ->
+
+                for (document in documents )
+                {
+                    emaildonor = document.get("email").toString()
+                    Log.e("emails", "DocumentSnapshot data: ${emaildonor}")
+
+                    if (auth.currentUser?.email.toString() == emaildonor){
+
+                        Timber.e(document.get("username").toString())
+                        binding.tvCardDonorDashboard.text = document.get("username").toString()
+
+                    }
+                }
+
+            }
+        }
         binding.vpDonorDashBoard.adapter = DonorDashBoardPagerAdapter(this)
         binding.btnDashBoardDonorRecentTab.setTextColor(ContextCompat.getColor(requireContext(),R.color.md_theme_light_primaryContainer))
         binding.btnDashBoardDonorHistoryTab.setOnClickListener {

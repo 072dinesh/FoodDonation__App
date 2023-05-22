@@ -91,25 +91,25 @@ private  var _binding : FragmentNgoDashBoardBinding ? = null
 
             }
         }
-       if (data.toString() == "Donor"){
-
-            dbNgo.collection("Donar").get().addOnSuccessListener {documents ->
-
-                for (document in documents )
-                {
-                    emailnago = document.get("email").toString()
-                    Log.e("emails", "DocumentSnapshot data: ${emailnago}")
-
-                    if (auth.currentUser?.email.toString() == emailnago){
-
-                        Timber.e(document.get("username").toString())
-                        binding.tvCardNgoDashBoard.text = document.get("username").toString()
-
-                    }
-                }
-
-            }
-        }
+//       if (data.toString() == "Donor"){
+//
+//            dbNgo.collection("Donar").get().addOnSuccessListener {documents ->
+//
+//                for (document in documents )
+//                {
+//                    emailnago = document.get("email").toString()
+//                    Log.e("emails", "DocumentSnapshot data: ${emailnago}")
+//
+//                    if (auth.currentUser?.email.toString() == emailnago){
+//
+//                        Timber.e(document.get("username").toString())
+//                        binding.tvCardNgoDashBoard.text = document.get("username").toString()
+//
+//                    }
+//                }
+//
+//            }
+//        }
 
 
 

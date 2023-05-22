@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout>
+
+    <data>
+        <variable
+            name="variable"
+            type="com.example.fooddonationapp.model.Request"/>
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        style="@style/Card_Form"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_marginTop="10dp"
+        app:strokeColor="?attr/colorPrimary"
+        android:layout_marginHorizontal="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="20dp"
+            android:layout_marginBottom="10dp"
+            >
+
+            <TextView
+                android:id="@+id/ngo_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="24dp"
+                android:fontFamily="@font/cherry_swash"
+                android:lineHeight="26dp"
+                android:text="@string/ngo_name"
+                android:textColor="?attr/colorPrimary"
+                android:textSize="18sp"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/NGO_location"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/cherry_swash"
+                android:lineHeight="26dp"
+                android:text="@string/Location_donor"
+                android:textColor="?attr/colorPrimary"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/ngo_name"
+                app:layout_constraintStart_toStartOf="@+id/ngo_name"
+                app:layout_constraintTop_toBottomOf="@+id/ngo_name">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/NGO_quantity"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/cherry_swash"
+                android:lineHeight="26dp"
+                android:text="@string/Donated_food_quantity"
+                android:textColor="?attr/colorPrimary"
+                android:textSize="18sp"
+
+                app:layout_constraintEnd_toEndOf="@+id/NGO_location"
+                app:layout_constraintStart_toStartOf="@+id/NGO_location"
+                app:layout_constraintTop_toBottomOf="@+id/NGO_location">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/NGO_phonenumber"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/cherry_swash"
+                android:lineHeight="26dp"
+                android:text="@string/ngo_phone_number"
+                android:textColor="?attr/colorPrimary"
+                android:textSize="18sp"
+
+                app:layout_constraintEnd_toEndOf="@+id/NGO_quantity"
+                app:layout_constraintStart_toStartOf="@+id/NGO_quantity"
+                app:layout_constraintTop_toBottomOf="@+id/NGO_quantity">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/date_"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/cherry_swash"
+                android:lineHeight="26dp"
+                android:text="@string/donation_accepted_date"
+                android:textColor="?attr/colorPrimary"
+                android:textSize="18sp"
+
+                app:layout_constraintEnd_toEndOf="@+id/NGO_phonenumber"
+                app:layout_constraintStart_toStartOf="@+id/NGO_phonenumber"
+                app:layout_constraintTop_toBottomOf="@+id/NGO_phonenumber">
+
+            </TextView>
+
+<!--            <TextView-->
+<!--                android:id="@+id/status_"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:fontFamily="@font/cherry_swash"-->
+<!--                android:lineHeight="26dp"-->
+<!--                android:text="@string/status"-->
+<!--                android:textColor="?attr/colorPrimary"-->
+<!--                android:textSize="18sp"-->
+<!--                app:layout_constraintEnd_toEndOf="@+id/date_"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/date_">-->
+
+<!--            </TextView>-->
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>
