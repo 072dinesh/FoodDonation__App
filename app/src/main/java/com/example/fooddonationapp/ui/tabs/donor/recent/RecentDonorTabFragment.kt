@@ -37,6 +37,7 @@ class RecentDonorTabFragment : Fragment() {
         topicList = HashMap()
         auth = FirebaseAuth.getInstance()
         recentList()
+
         binding.donorRecentRecycler.setHasFixedSize(true)
         return binding.root
     }
@@ -57,6 +58,21 @@ private fun recentList(){
                 }
             }
             recentDonorAdapter = RecentDonorTabAdapter(onBtnClick = {
+                db.collection("Donar").get().addOnSuccessListener {
+
+                    for (document in it){
+                        if (document.get("email").toString() == auth.currentUser?.email.toString())
+                        {
+                            topicList["acceptbyname"] = document.get("username").toString()
+
+                            db.collection("Request").document(document.id).update(topicList)
+                                .addOnSuccessListener {
+                                    Toast.makeText(requireContext(),"Approve",Toast.LENGTH_LONG).show()
+                                }
+                        }
+                    }
+                }
+
                 it.id.let {id->
                     db.collection("Request").get().addOnSuccessListener {documents->
 
@@ -64,6 +80,8 @@ private fun recentList(){
                             if (id.equals(document.get("id").toString())){
                                 topicList["status"]="Approve"
                                 topicList["acceptbyemail"]=auth.currentUser?.email.toString()
+
+
                                 db.collection("Request").document(document.id).update(topicList)
                                     .addOnSuccessListener {
                                         Toast.makeText(requireContext(),"Approve",Toast.LENGTH_LONG).show()

@@ -99,6 +99,7 @@ class RequestFormFragment : Fragment() {
         dbNgo.collection("NGO").get()
             .addOnSuccessListener {documents ->
 
+
                 for (document in documents ){
                     var email = auth.currentUser?.email.toString()
                     var ngoemail = document.get("email").toString()
@@ -115,6 +116,14 @@ class RequestFormFragment : Fragment() {
                         topicList["acceptbyname"] =""
                         topicList["acceptbyemail"]=""
                         topicList["date"]=currentdate
+                       // topicList["id"]=
+
+
+                            val myuser = dbNgo.collection("Request").document()
+                        topicList["id"] = myuser.id.toString()
+
+
+
 
                         dbNgo.collection("Request")
                             .add(topicList)
