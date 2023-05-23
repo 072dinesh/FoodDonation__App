@@ -54,17 +54,17 @@ private fun recentList(){
         it.id.let {id->
             db.collection("Request").get().addOnSuccessListener {documents->
 
-                for (document in documents){
-                    if (id.equals(document.get("id").toString())){
-                        topicList["status"]="Approve"
-                        topicList["acceptbyemail"]=auth.currentUser?.email.toString()
+                        for (document in documents){
+                            if (id.equals(document.get("id").toString())){
+                                topicList["status"]="Approve"
+                                topicList["acceptedbyemail"]=auth.currentUser?.email.toString()
 
-                        db.collection("Request").document(document.id).update(topicList)
-                            .addOnSuccessListener {
-                                Toast.makeText(requireContext(),"Accept",Toast.LENGTH_LONG).show()
 
+                                db.collection("Request").document(document.id).update(topicList)
+                                    .addOnSuccessListener {
+                                        Toast.makeText(requireContext(),"Approve",Toast.LENGTH_LONG).show()
+                                    }
                             }
-                    }
 
 
 
@@ -73,7 +73,7 @@ private fun recentList(){
         }
 
     })
-    db.collection("Request").orderBy("dateandtime",Query.Direction.ASCENDING).get().addOnSuccessListener {
+    db.collection("Request").orderBy("dateandtime", Query.Direction.ASCENDING).get().addOnSuccessListener {
         if (!it.isEmpty){
 
 

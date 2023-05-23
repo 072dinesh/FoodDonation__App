@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="data"
+            type="com.example.fooddonationapp.model.Request"/>
+    </data>
+
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    android:layout_marginHorizontal="20dp"
+    app:strokeColor="?attr/colorPrimary"
+    style="@style/Card_Form">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="20dp">
+
+        <TextView
+            android:id="@+id/tv_list_recent_ngo_quantity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="24dp"
+            android:text="@string/quanitiy_of_food_donated"
+            android:textColor="?attr/colorPrimary"
+            android:fontFamily="@font/cherry_swash"
+            android:textSize="18sp"
+            android:lineHeight="26sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/tv_list_recent_ngo_location"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/location_recent_ngo"
+            android:textColor="?attr/colorPrimary"
+            android:fontFamily="@font/cherry_swash"
+            android:textSize="18sp"
+            android:lineHeight="26sp"
+            app:layout_constraintEnd_toEndOf="@+id/tv_list_recent_ngo_quantity"
+            app:layout_constraintStart_toStartOf="@+id/tv_list_recent_ngo_quantity"
+            app:layout_constraintTop_toBottomOf="@+id/tv_list_recent_ngo_quantity" />
+
+        <TextView
+            android:id="@+id/tv_list_recent_ngo_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/food_donated_date"
+            android:textColor="?attr/colorPrimary"
+            android:fontFamily="@font/cherry_swash"
+            android:textSize="18sp"
+            android:lineHeight="26sp"
+            app:layout_constraintEnd_toEndOf="@+id/tv_list_recent_ngo_location"
+            app:layout_constraintStart_toStartOf="@+id/tv_list_recent_ngo_location"
+            app:layout_constraintTop_toBottomOf="@+id/tv_list_recent_ngo_location" />
+
+        <TextView
+            android:id="@+id/tv_list_recent_ngo_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/Time"
+            android:textColor="?attr/colorPrimary"
+            android:fontFamily="@font/cherry_swash"
+            android:textSize="18sp"
+            android:lineHeight="26sp"
+            app:layout_constraintEnd_toEndOf="@+id/tv_list_recent_ngo_date"
+            app:layout_constraintStart_toStartOf="@+id/tv_list_recent_ngo_date"
+            app:layout_constraintTop_toBottomOf="@+id/tv_list_recent_ngo_date" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/accept"
+            style="@style/Button_accept"
+            app:cornerRadius="20dp"
+            android:textAllCaps="false"
+            android:paddingHorizontal="20dp"
+            app:layout_constraintEnd_toEndOf="@+id/tv_list_recent_ngo_time"
+            app:layout_constraintTop_toBottomOf="@+id/tv_list_recent_ngo_time" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>
+</layout>

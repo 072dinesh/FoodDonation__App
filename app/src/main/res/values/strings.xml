@@ -24,6 +24,10 @@
     <string name="request_quantity_format">Quantity For <b> %1$s </b>People</string>
     <string name="request_location_format">At Location <b>%1$s</b></string>
     <string name="request_phone_format">For More Information Call on <b>%1$s</b></string>
+    <string name="quanitiy_of_food_donated">Quantity of Food Donated <b> %1$s </b></string>
+    <string name="location_recent_ngo">Location <b>%1$s</b></string>
+    <string name="food_donated_date">Food Donated on <b>%1$s</b>Date</string>
+    <string name="Time">Time<b> %1$s </b></string>
     <string name="accept">Accept</string>
     <string name="login">Login</string>
     <string name="registration">Registration</string>
