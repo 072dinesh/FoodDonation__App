@@ -93,6 +93,8 @@ class RequestFormFragment : Fragment() {
 
         val dateTime = DateTimeFormatter.ofPattern("yyyy-MM-dd")
         val currentdate = LocalDateTime.now().format(dateTime)
+        val dateandtime = DateTimeFormatter.ofPattern("yyyy-MM-dd , HH:mm")
+        val curredateandtime = LocalDateTime.now().format(dateandtime)
         var ngoname:String?=null
 
 
@@ -116,6 +118,7 @@ class RequestFormFragment : Fragment() {
                         topicList["acceptbyname"] =""
                         topicList["acceptbyemail"]=""
                         topicList["date"]=currentdate
+                        topicList["dateandtime"] = curredateandtime
                        // topicList["id"]=
 
 
