@@ -34,7 +34,7 @@
                 android:layout_marginEnd="8dp"
                 android:fontFamily="@font/cherry_swash_bold"
                 android:lineHeight="28sp"
-                android:text="TextView"
+                android:text=""
                 android:textColor="?attr/colorPrimary"
                 android:textSize="22sp"
                 app:layout_constraintEnd_toStartOf="@+id/iv_dash_board_ngo_log_out"

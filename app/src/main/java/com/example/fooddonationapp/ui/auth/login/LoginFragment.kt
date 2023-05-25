@@ -9,10 +9,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.navigation.fragment.findNavController
 import com.example.fooddonationapp.databinding.FragmentLoginBinding
 import com.example.fooddonationapp.model.Donor
 import com.example.fooddonationapp.utils.PrefManager
+import com.example.fooddonationapp.utils.createLoadingAlert
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.firestore.FirebaseFirestore
@@ -29,6 +31,7 @@ class LoginFragment : Fragment() {
 
     private lateinit var dbNgo : FirebaseFirestore
     private lateinit var dbDonar : FirebaseFirestore
+    private lateinit var loadingAlert: AlertDialog
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,12 +39,15 @@ class LoginFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentLoginBinding.inflate(inflater,container,false)
+        loadingAlert = createLoadingAlert()
         auth= FirebaseAuth.getInstance()
 
         binding.btnLogin.setOnClickListener {
 
             login()
+
         }
+
 
         setHasOptionsMenu(true)
 
@@ -70,11 +76,13 @@ class LoginFragment : Fragment() {
 
 
 
+
         auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(requireActivity()) {
 
 
             if (it.isSuccessful) {
 
+                loadingAlert.show()
                 dbDonar.collection("Donar")
                     .get()
                     .addOnSuccessListener { documents ->
@@ -91,13 +99,16 @@ class LoginFragment : Fragment() {
                                 PrefManager.setString(PrefManager.ACCESS_TOKEN,"Donor")
                                 var data =  PrefManager.getString(PrefManager.ACCESS_TOKEN)
                                 Timber.e("Data Hsred Login",data)
+                                loadingAlert.dismiss()
                                 findNavController().navigate(
                                     LoginFragmentDirections.actionLoginFragmentToDonorDashBoardFragment()
                                 )
+
                             }
                         }
                     }
 
+                loadingAlert.show()
                 dbNgo.collection("NGO")
                     .get()
                     .addOnSuccessListener { documents ->
@@ -111,7 +122,9 @@ class LoginFragment : Fragment() {
                                 PrefManager.setString(PrefManager.ACCESS_TOKEN, "Ngo")
                                 var data =  PrefManager.getString(PrefManager.ACCESS_TOKEN)
                                 Timber.e(data.toString())
+                                loadingAlert.dismiss()
                                 findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToNgoDashBoardFragment())
+
 
 
                             }

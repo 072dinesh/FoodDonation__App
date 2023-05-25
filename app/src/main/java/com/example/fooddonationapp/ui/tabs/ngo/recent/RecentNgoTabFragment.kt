@@ -7,11 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.core.view.isVisible
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fooddonationapp.databinding.FragmentRecentNgoTabBinding
 import com.example.fooddonationapp.model.Request
 import com.example.fooddonationapp.utils.Constant
+import com.example.fooddonationapp.utils.createLoadingAlert
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
@@ -28,12 +31,14 @@ class RecentNgoTabFragment : Fragment() {
     var requestFormBrodcaster : LocalBroadcastManager ? = null
     private lateinit var topicList: MutableMap<String, Any>
     lateinit var auth: FirebaseAuth
+    private lateinit var loadingAlert: AlertDialog
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentRecentNgoTabBinding.inflate(inflater,container,false)
+        loadingAlert = createLoadingAlert()
         db = FirebaseFirestore.getInstance()
         binding.recyclerview.layoutManager = LinearLayoutManager(requireContext())
         requestArrayList = arrayListOf()
@@ -46,37 +51,11 @@ class RecentNgoTabFragment : Fragment() {
         return binding.root
     }
     private fun recentList(){
-        recentngoAdapter = RecentNgoTabAdapter (onBtnClick = {
-            db.collection("NGO").get().addOnSuccessListener {
-                for (document in it){
-                    if (auth.currentUser?.email.toString().equals(document.get("email"))){
-                        topicList["acceptbyname"]=document.get("username").toString()
-                    }
-                }
-            }
-            it.id.let {id->
-                db.collection("Request").get().addOnSuccessListener {documents->
+        recentngoAdapter = RecentNgoTabAdapter ()
 
-                    for (document in documents){
-                        if (id.equals(document.get("id").toString())){
-                            topicList["status"]="Approve"
-                            topicList["acceptedbyemail"]=auth.currentUser?.email.toString()
-
-
-                            db.collection("Request").document(document.id).update(topicList)
-                                .addOnSuccessListener {
-                                    Toast.makeText(requireContext(),"Approve",Toast.LENGTH_LONG).show()
-                                }
-                        }
-
-
-
-                    }
-                }
-            }
-
-        })
+        loadingAlert.show()
         db.collection("Request").get().addOnSuccessListener {
+
             if (!it.isEmpty){
 
 
@@ -89,15 +68,17 @@ class RecentNgoTabFragment : Fragment() {
                         {
                             requestArrayList.add(request)
                         }
-
+                        binding.tvDataNoteFoundRecenNgo.isVisible = requestArrayList.size == 0
                         Timber.e("${requestArrayList.size.toString()}")
                     }
                 }
                 binding.recyclerview.adapter = recentngoAdapter
                recentngoAdapter.setData(requestArrayList)
+                loadingAlert.dismiss()
 
             }
         }
+
 
 
     }

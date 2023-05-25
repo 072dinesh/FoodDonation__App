@@ -90,6 +90,7 @@ private fun recentList(){
 
 
     })
+    loadingAlert.show()
     db.collection("Request").orderBy("dateandtime", Query.Direction.ASCENDING).get().addOnSuccessListener {
         if (!it.isEmpty){
 
@@ -114,7 +115,7 @@ private fun recentList(){
 
             binding.donorRecentRecycler.adapter = recentDonorAdapter
             recentDonorAdapter.setData(requestArrayList)
-
+            loadingAlert.dismiss()
 
         }
     }

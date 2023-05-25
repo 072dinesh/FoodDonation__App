@@ -52,4 +52,5 @@
     <string name="enter_email">Enter Email</string>
     <string name="no_data_found">No Data Found</string>
     <string name="no_recent_request_found">No Recent Request Found</string>
+    <string name="no_history_found">No History Found</string>
 </resources>

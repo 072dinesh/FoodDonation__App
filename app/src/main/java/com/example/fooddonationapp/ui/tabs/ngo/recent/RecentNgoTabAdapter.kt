@@ -9,11 +9,11 @@ import com.example.fooddonationapp.databinding.ListNgoRecentBinding
 import com.example.fooddonationapp.model.Request
 import com.example.fooddonationapp.utils.DiffUtilExt
 
-class RecentNgoTabAdapter(val onBtnClick : (Request)-> Unit) :RecyclerView.Adapter<RecentNgoTabAdapter.MyViewHolder>(){
+class RecentNgoTabAdapter() :RecyclerView.Adapter<RecentNgoTabAdapter.MyViewHolder>(){
     private var requestList = emptyList<Request>()
     class MyViewHolder(private val binding : ListNgoRecentBinding):RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(currentItem :Request,onBtnClick: (Request)-> Unit){
+        fun bind(currentItem :Request){
             binding.data=currentItem
             binding.tvListRecentNgoQuantity.text=itemView.context.getString(R.string.quanitiy_of_food_donated,currentItem.quantity.toString())
             binding.tvListRecentNgoLocation.text=itemView.context.getString(R.string.location_recent_ngo,currentItem.location.toString())
@@ -43,7 +43,7 @@ class RecentNgoTabAdapter(val onBtnClick : (Request)-> Unit) :RecyclerView.Adapt
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentItem = requestList.getOrNull(position)
         currentItem?.let {
-            holder.bind(it,onBtnClick)
+            holder.bind(it)
         }
     }
     fun setData(Result:List<Request>){
