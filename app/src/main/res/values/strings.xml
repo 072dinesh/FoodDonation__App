@@ -20,10 +20,11 @@
     <string name="location">Location</string>
     <string name="select_time">Select Time</string>
     <string name="request">Request</string>
-    <string name="request_from_format">Request By <b>%1$s</b></string>
-    <string name="request_quantity_format">Quantity For <b> %1$s </b>People</string>
-    <string name="request_location_format">At Location <b>%1$s</b></string>
-    <string name="request_phone_format">For More Information Call on <b>%1$s</b></string>
+    <string name="request_from_format">Request By&#160;</string>
+    <string name="request_quantity_format">Quantity For&#160;</string>
+    <string name="people">&#160;People</string>
+    <string name="request_location_format">At Location&#160;</string>
+    <string name="request_phone_format">For More Information Call on&#160;</string>
     <string name="quanitiy_of_food_donated">Quantity of Food Donated <b> %1$s </b></string>
     <string name="location_recent_ngo">Location <b>%1$s</b></string>
     <string name="food_donated_date">Food Donated on <b>%1$s</b>Date</string>
@@ -42,8 +43,6 @@
     <string name="status">Status <b>%1$s</b></string>
     <string name="date">Date <b>%1$s</b></string>
     <string name="location_ngo">Location <b>%1$s</b></string>
-
-
     <string name="ngo_name">NGO Name <b> %1$s</b></string>
     <string name="ngo_phone_number">NGO Phone Number <b>%1$s</b> </string>
     <string name="donation_accepted_date">Date of Donation Accepted <b>%1$s</b></string>
@@ -51,4 +50,6 @@
     <string name="Location_donor">Location <b>%1$s</b></string>
 
     <string name="enter_email">Enter Email</string>
+    <string name="no_data_found">No Data Found</string>
+    <string name="no_recent_request_found">No Recent Request Found</string>
 </resources>

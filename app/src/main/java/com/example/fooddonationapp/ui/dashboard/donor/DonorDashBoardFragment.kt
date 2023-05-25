@@ -3,16 +3,18 @@ package com.example.fooddonationapp.ui.dashboard.donor
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.example.fooddonationapp.R
 import com.example.fooddonationapp.databinding.FragmentDonorDashBoardBinding
-import com.example.fooddonationapp.model.Donor
+import com.example.fooddonationapp.ui.tabs.donor.history.HistoryDonorTabFragment
+import com.example.fooddonationapp.ui.tabs.donor.recent.RecentDonorTabFragment
+import com.example.fooddonationapp.ui.tabs.ngo.history.HistoryNgoTabFragment
 import com.example.fooddonationapp.utils.PrefManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -26,6 +28,7 @@ class DonorDashBoardFragment : Fragment() {
     lateinit var auth: FirebaseAuth
     var emaildonor : String?=null
     private lateinit var dbdonar : FirebaseFirestore
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -43,6 +46,7 @@ class DonorDashBoardFragment : Fragment() {
     private fun setUpUi(){
         var data =  PrefManager.getString(PrefManager.ACCESS_TOKEN)
         if (data.toString() == "Donor"){
+
 
             dbdonar.collection("Donar").get().addOnSuccessListener {documents ->
 
@@ -70,6 +74,7 @@ class DonorDashBoardFragment : Fragment() {
             binding.btnDashBoardDonorHistoryTab.setTextColor(ContextCompat.getColor(requireContext(),R.color.md_theme_light_primaryContainer))
             binding.btnDashBoardDonorRecentTab.setTextColor(ContextCompat.getColor(requireContext(),R.color.md_theme_light_primary))
             binding.btnDashBoardDonorRecentTab.isSelected=false
+           //fragmentManager?.beginTransaction()?.detach(HistoryDonorTabFragment())?.attach(RecentDonorTabFragment())?.commit()
         }
             binding.btnDashBoardDonorRecentTab.setOnClickListener {
             binding.vpDonorDashBoard.currentItem = 0
@@ -78,6 +83,7 @@ class DonorDashBoardFragment : Fragment() {
             binding.btnDashBoardDonorRecentTab.setTextColor(ContextCompat.getColor(requireContext(),R.color.md_theme_light_primaryContainer))
             binding.btnDashBoardDonorHistoryTab.setTextColor(ContextCompat.getColor(requireContext(),R.color.md_theme_light_primary))
             binding.btnDashBoardDonorHistoryTab.isSelected=false
+             //  fragmentManager?.beginTransaction()?.detach(RecentDonorTabFragment())?.attach(HistoryDonorTabFragment())?.commit()
         }
 
         binding.vpDonorDashBoard.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
@@ -86,18 +92,23 @@ class DonorDashBoardFragment : Fragment() {
             override fun onPageSelected(position: Int) {
                 if(position == 0){
                     Log.e("Log","Onselect")
-                    binding.btnDashBoardDonorHistoryTab.isSelected = false
+
                     binding.btnDashBoardDonorHistoryTab.setBackgroundResource(R.drawable.btn_not_press)
                     binding.btnDashBoardDonorRecentTab.setBackgroundResource(R.drawable.btn_press)
-                    binding.btnDashBoardDonorHistoryTab.setTextColor(ContextCompat.getColor(requireContext(), R.color.md_theme_light_primaryContainer))
+                    binding.btnDashBoardDonorRecentTab.setTextColor(ContextCompat.getColor(requireContext(), R.color.md_theme_light_primaryContainer))
                     binding.btnDashBoardDonorHistoryTab.setTextColor(ContextCompat.getColor(requireContext(), R.color.md_theme_light_primary))
+                    binding.btnDashBoardDonorHistoryTab.isSelected = false
+                    //refreshFragments(HistoryNgoTabFragment())
+                   // fragmentManager?.beginTransaction()?.detach(RecentDonorTabFragment())?.attach(HistoryDonorTabFragment())?.commit()
                 }
                 else{
-                    binding.btnDashBoardDonorRecentTab.isSelected = false
+
                     binding.btnDashBoardDonorRecentTab.setBackgroundResource(R.drawable.btn_not_press)
                     binding.btnDashBoardDonorHistoryTab.setBackgroundResource(R.drawable.btn_press)
-                    binding.btnDashBoardDonorRecentTab.setTextColor(ContextCompat.getColor(requireContext(), R.color.md_theme_light_primaryContainer))
+                    binding.btnDashBoardDonorHistoryTab.setTextColor(ContextCompat.getColor(requireContext(), R.color.md_theme_light_primaryContainer))
                     binding.btnDashBoardDonorRecentTab.setTextColor(ContextCompat.getColor(requireContext(), R.color.md_theme_light_primary))
+                    binding.btnDashBoardDonorRecentTab.isSelected = false
+                    //fragmentManager?.beginTransaction()?.detach(HistoryDonorTabFragment())?.attach(RecentDonorTabFragment())?.commit()
                 }
                 super.onPageSelected(position)
             }
@@ -122,5 +133,8 @@ class DonorDashBoardFragment : Fragment() {
         }
 
     }
+//         fun refreshFragments(fragment: Fragment) {
+//        binding.vpDonorDashBoard.setAdapter(DonorDashBoardPagerAdapter(fragment))
+//    }
 
 }

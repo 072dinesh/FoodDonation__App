@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-
+    <style name="Custom_Loading_Dialog" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+    <style name="list_text_style">
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="android:fontFamily">@font/cherry_swash_multi_weight</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:lineHeight">26sp</item>
+    </style>
 </resources>

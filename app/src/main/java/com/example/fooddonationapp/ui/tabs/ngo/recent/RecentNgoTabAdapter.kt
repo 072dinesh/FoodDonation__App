@@ -19,9 +19,9 @@ class RecentNgoTabAdapter(val onBtnClick : (Request)-> Unit) :RecyclerView.Adapt
             binding.tvListRecentNgoLocation.text=itemView.context.getString(R.string.location_recent_ngo,currentItem.location.toString())
             binding.tvListRecentNgoDate.text=itemView.context.getString(R.string.food_donated_date,currentItem.date.toString())
             binding.tvListRecentNgoTime.text=itemView.context.getString(R.string.Time,currentItem.time.toString())
-            binding.button2.setOnClickListener {
-                onBtnClick(currentItem)
-            }
+//            binding.button2.setOnClickListener {
+//                onBtnClick(currentItem)
+//            }
         }
         companion object {
             fun from(parent: ViewGroup): RecentNgoTabAdapter.MyViewHolder {

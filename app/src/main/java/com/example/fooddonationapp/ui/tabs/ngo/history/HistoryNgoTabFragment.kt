@@ -31,7 +31,7 @@ class HistoryNgoTabFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentHistoryNgoTabBinding.inflate(inflater,container,false)
-
+        auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
         binding.recyclerview.layoutManager = LinearLayoutManager(requireContext())
         userArrayList = arrayListOf()
@@ -57,7 +57,10 @@ class HistoryNgoTabFragment : Fragment() {
                         {
                                       val request : Request? = data.toObject(Request::class.java)
                                 if (request != null){
-                                    userArrayList.add(request)
+                                    if (request.status!="Pending" && request.ngoemail == auth.currentUser?.email.toString()){
+                                        userArrayList.add(request)
+                                    }
+
                                 }
 
                         }

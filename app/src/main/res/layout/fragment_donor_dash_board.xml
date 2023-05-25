@@ -17,6 +17,7 @@
       android:minHeight="200dp"
 
       >
+
       <androidx.constraintlayout.widget.ConstraintLayout
           android:layout_width="match_parent"
           android:layout_height="match_parent"
@@ -26,40 +27,38 @@
               android:id="@+id/tv_card_donor_dashboard"
               android:layout_width="0dp"
               android:layout_height="wrap_content"
-              android:text="TextView"
-              android:textSize="22sp"
-              android:textColor="?attr/colorPrimary"
               android:layout_marginStart="15sp"
-              android:layout_marginTop="30sp"
               android:layout_marginEnd="8dp"
-              android:lineHeight="28sp"
-              app:layout_constraintStart_toStartOf="parent"
-              app:layout_constraintTop_toTopOf="parent"
-              app:layout_constraintEnd_toStartOf="@id/tv_dash_board_donor_logout"
               android:fontFamily="@font/cherry_swash_bold"
-              tools:text="Donor Name"
-              />
+              android:lineHeight="28sp"
+              android:text="TextView"
+              android:textColor="?attr/colorPrimary"
+              android:textSize="22sp"
+              app:layout_constraintBottom_toBottomOf="@+id/tv_dash_board_profile"
+              app:layout_constraintEnd_toStartOf="@id/tv_dash_board_donor_logout"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintTop_toTopOf="@+id/tv_dash_board_profile"
+              tools:text="Donor Name" />
 
           <ImageView
               android:id="@+id/tv_dash_board_donor_logout"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              app:layout_constraintBottom_toBottomOf="@id/tv_card_donor_dashboard"
-              app:layout_constraintTop_toTopOf="@id/tv_card_donor_dashboard"
-              app:layout_constraintEnd_toStartOf="@id/tv_dash_board_profile"
               android:layout_marginEnd="15dp"
-              android:src="@drawable/ic_logout"/>
+              android:src="@drawable/ic_logout"
+              app:layout_constraintBottom_toBottomOf="@+id/tv_dash_board_profile"
+              app:layout_constraintEnd_toStartOf="@id/tv_dash_board_profile"
+              app:layout_constraintTop_toTopOf="@+id/tv_dash_board_profile" />
 
           <ImageView
               android:id="@+id/tv_dash_board_profile"
               android:layout_width="40dp"
               android:layout_height="40dp"
+              android:layout_marginTop="25dp"
               android:layout_marginEnd="20dp"
-              app:layout_constraintEnd_toEndOf="parent"
-              app:layout_constraintTop_toTopOf="@id/tv_card_donor_dashboard"
-              app:layout_constraintTop_toBottomOf="@id/tv_card_donor_dashboard"
               android:src="@drawable/ic_profile_2"
-              />
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintTop_toTopOf="parent" />
 
       </androidx.constraintlayout.widget.ConstraintLayout>
   </com.google.android.material.card.MaterialCardView>
@@ -91,9 +90,11 @@
             android:id="@+id/btn_dash_board_donor_recent_tab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
             android:layout_weight="1"
             android:clickable="true"
             android:paddingVertical="15dp"
+
             android:text="@string/recent"
             android:textAlignment="center" />
 
@@ -103,6 +104,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:clickable="true"
+            android:layout_marginHorizontal="10dp"
             android:paddingVertical="15dp"
             android:text="@string/history"
             android:textAlignment="center" />

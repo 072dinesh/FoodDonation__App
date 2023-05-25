@@ -80,20 +80,6 @@
             app:layout_constraintStart_toStartOf="@+id/tv_list_recent_ngo_date"
             app:layout_constraintTop_toBottomOf="@+id/tv_list_recent_ngo_date" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="@string/accept"
-            style="@style/Button_accept"
-            app:cornerRadius="20dp"
-            android:textAllCaps="false"
-            android:paddingHorizontal="20dp"
-            app:layout_constraintEnd_toEndOf="@+id/tv_list_recent_ngo_time"
-            app:layout_constraintTop_toBottomOf="@+id/tv_list_recent_ngo_time" />
-
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

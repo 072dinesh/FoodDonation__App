@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <font
+        android:font="@font/cherry_swash"
+        android:fontStyle="normal"/>
+    <font
+    android:font="@font/cherry_swash_bold_1"
+    android:fontStyle="normal"
+        android:fontWeight="500"/>
+
+
+</font-family>

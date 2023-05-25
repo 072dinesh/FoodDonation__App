@@ -85,7 +85,7 @@ class RecentNgoTabFragment : Fragment() {
                     val request : Request? = data.toObject(Request::class.java)
                     if (request != null){
 
-                        if (request.status == "Pending")
+                        if (request.status == "Pending" && request.ngoemail == auth.currentUser?.email.toString())
                         {
                             requestArrayList.add(request)
                         }
