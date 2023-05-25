@@ -4,12 +4,14 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
+import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.widget.doOnTextChanged
 import androidx.navigation.fragment.findNavController
 import com.example.fooddonationapp.databinding.FragmentLoginBinding
 import com.example.fooddonationapp.model.Donor
@@ -44,6 +46,8 @@ class LoginFragment : Fragment() {
 
         binding.btnLogin.setOnClickListener {
 
+
+            validtion()
             login()
 
         }
@@ -57,12 +61,41 @@ class LoginFragment : Fragment() {
         dbNgo = FirebaseFirestore.getInstance()
         dbDonar = FirebaseFirestore.getInstance()
 
-
-
-
         return binding.root
     }
+
+
+    private fun validtion(): Boolean{
+        var passwordText = binding.password.text.toString()
+
+        val emailInputText = binding.editEmail.text.toString()
+
+        if (emailInputText.isEmpty()){
+            binding.editEmail.error = "This field is required"
+            return false
+        }
+        else if(!Patterns.EMAIL_ADDRESS.matcher(emailInputText).matches()){
+            binding.editEmail.error = "Invalid Email Address"
+            return false
+        }
+
+        else if(passwordText.isEmpty()) {
+            binding.password.error = "This field is required"
+            return false
+        }
+        else if(passwordText.length < 8) {
+            binding.password.error = "Minimum 8 Character Password"
+            return false
+        }
+
+
+        return true
+    }
+
+
     private fun login() {
+
+
         val email = binding.editEmail.text.toString()
         val password = binding.password.text.toString()
 

@@ -73,7 +73,8 @@
                     android:id="@+id/et_form_quantity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text"
+                    android:inputType="number"
+
                     android:textColor="?attr/colorPrimary"
                     android:textCursorDrawable="@drawable/cursarcolor" />
             </com.google.android.material.textfield.TextInputLayout>

@@ -2,23 +2,20 @@ package com.example.fooddonationapp.ui.tabs.donor.recent
 
 import android.app.AlertDialog
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
-import androidx.navigation.fragment.findNavController
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.fooddonationapp.R
-import com.example.fooddonationapp.databinding.FragmentOnBoardingBinding
 import com.example.fooddonationapp.databinding.FragmentRecentDonorTabBinding
 import com.example.fooddonationapp.model.Request
 import com.example.fooddonationapp.utils.createLoadingAlert
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
-import okhttp3.internal.userAgent
 import timber.log.Timber
 import kotlin.concurrent.fixedRateTimer
 
@@ -43,8 +40,11 @@ class RecentDonorTabFragment : Fragment() {
         binding.donorRecentRecycler.layoutManager = LinearLayoutManager(requireContext())
         requestArrayList = arrayListOf()
         topicList = HashMap()
+
         auth = FirebaseAuth.getInstance()
+
         recentList()
+
         binding.donorRecentRecycler.setHasFixedSize(true)
        fragmentManager?.beginTransaction()?.detach(this)?.attach(this)?.commit()
         return binding.root
@@ -68,16 +68,15 @@ private fun recentList(){
                         for (document in documents){
                             if (id.equals(document.get("id").toString())){
                                 topicList["status"]="Approve"
-                                topicList["acceptedbyemail"]=auth.currentUser?.email.toString()
+                                topicList["acceptbyemail"]=auth.currentUser?.email.toString()
 
 
                                 db.collection("Request").document(document.id).update(topicList)
                                     .addOnSuccessListener {
                                         Toast.makeText(requireContext(),"Accepted",Toast.LENGTH_LONG).show()
                                     }
+
                             }
-
-
 
                 }
             }
@@ -94,9 +93,7 @@ private fun recentList(){
     db.collection("Request").orderBy("dateandtime", Query.Direction.ASCENDING).get().addOnSuccessListener {
         if (!it.isEmpty){
 
-
             for (data in it.documents){
-
                 val request : Request? = data.toObject(Request::class.java)
                 if (request != null){
 

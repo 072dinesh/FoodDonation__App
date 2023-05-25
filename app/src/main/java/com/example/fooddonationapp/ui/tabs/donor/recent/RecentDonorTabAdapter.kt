@@ -1,8 +1,13 @@
 package com.example.fooddonationapp.ui.tabs.donor.recent
 
 import android.text.SpannableStringBuilder
+import android.provider.Settings.Global.getString
+
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.graphics.toColor
+import androidx.core.graphics.toColorInt
+import androidx.core.text.bold
 import androidx.core.text.bold
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -30,6 +35,7 @@ class RecentDonorTabAdapter(val onBtnClick : (Request)-> Unit) : RecyclerView.Ad
             SpannableStringBuilder().append(itemView.context.getString(R.string.request_phone_format)).bold { append(currentItem.phoneno)}
             binding.button2.setOnClickListener {
                 onBtnClick(currentItem)
+
             }
         }
 

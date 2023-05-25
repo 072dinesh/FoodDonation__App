@@ -7,6 +7,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import android.widget.Toast
 import com.google.android.material.snackbar.Snackbar
+import java.util.regex.Pattern
 
 fun Any?.toast(context: Context, isShort: Boolean = false): Toast {
     return Toast.makeText(
@@ -29,3 +30,7 @@ fun String.snackBar(view: View, context: Context?=null) {
     snackTextView.maxLines = 4
     snackbar.show()
 }
+
+val  User_Name = Pattern.compile(
+    "[a-zA-Z]"
+)

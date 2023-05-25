@@ -60,6 +60,7 @@ class RequestFormFragment : Fragment() {
         binding.btnRequestFormRequest.setOnClickListener {
             Toast.makeText(requireContext(),"requested",Toast.LENGTH_LONG).show()
             requestNGO()
+            validation()
         }
 
         return binding.root
@@ -81,6 +82,23 @@ class RequestFormFragment : Fragment() {
                 TODO("Not yet implemented")
             }
         }
+    }
+
+    private fun validation():Boolean{
+        var quantityInputText = binding.etFormQuantity.text.toString()
+        if (quantityInputText.isEmpty()){
+
+            binding.etFormQuantity.setError( "This field is required")
+
+            return false
+        }
+        else if (!quantityInputText.matches(".*[0-9].*".toRegex()))
+        {
+            binding.etFormQuantity.error= "Must be all digit"
+
+            return false
+        }
+        return true
     }
 
 
@@ -115,8 +133,8 @@ class RequestFormFragment : Fragment() {
                         topicList["time"] = currenttime
                         topicList["ngoemail"] = auth.currentUser?.email.toString()
                         topicList["status"] = "Pending"
-                        topicList["acceptbyname"] =""
-                        topicList["acceptbyemail"]=""
+//                        topicList["acceptbyname"] =""
+//                        topicList["acceptbyemail"]=""
                         topicList["date"]=currentdate
                         topicList["dateandtime"] = curredateandtime
                        // topicList["id"]=
