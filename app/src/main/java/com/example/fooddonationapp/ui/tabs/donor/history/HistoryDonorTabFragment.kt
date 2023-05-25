@@ -26,6 +26,7 @@ class HistoryDonorTabFragment : Fragment() {
     private lateinit var myAdapter : HistoryDonorTabAdapter
     private lateinit var db : FirebaseFirestore
     lateinit var auth: FirebaseAuth
+
     private lateinit var loadingAlert: AlertDialog
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,7 +46,7 @@ class HistoryDonorTabFragment : Fragment() {
     fun EventChangeListerner()
     {
         loadingAlert.show()
-        db.collection("Request").orderBy("date", Query.Direction.DESCENDING)
+        db.collection("Request").orderBy("dateandtime", Query.Direction.DESCENDING)
             .get().addOnSuccessListener {
 
                 if (!it.isEmpty){

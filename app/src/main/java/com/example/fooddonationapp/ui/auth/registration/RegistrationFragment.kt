@@ -2,6 +2,7 @@ package com.example.fooddonationapp.ui.auth.registration
 
 import android.os.Bundle
 import android.util.Log
+import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,9 +14,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.fooddonationapp.databinding.FragmentRegistrationBinding
 import com.example.fooddonationapp.model.Donor
+import com.example.fooddonationapp.utils.Constant
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.snapshot.Index
 import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FirebaseFirestore
@@ -80,6 +83,7 @@ class RegistrationFragment : Fragment() {
 
             setOnCheckedChangeListener()
 
+
         }
 
         dbNgo = FirebaseFirestore.getInstance()
@@ -119,17 +123,108 @@ class RegistrationFragment : Fragment() {
         }
     }
 
+    private fun validations():Boolean{
+
+        var usernameInputText = binding.username.text.toString()
+        val emailInputText = binding.editEmail.text.toString()
+        var passwordText = binding.editPassword.text.toString()
+        val phoneInputText = binding.editPhone.text.toString()
+        val cityInputText = binding.spinner.selectedItemPosition
+        var saas = binding.spinner.getItemAtPosition(cityInputText).toString()
+
+
+
+
+
+
+        if (usernameInputText.isEmpty()){
+
+            binding.username.setError( "This field is required")
+
+            return false
+        }
+        else if (!usernameInputText.matches(".*[a-zA-Z].*".toRegex()))
+        {
+            binding.username.error= "Must be all alphabets "
+
+            return false
+        }
+
+           else if (binding.spinner.selectedItem == null){
+            Toast.makeText(requireContext(), "Please select city", Toast.LENGTH_SHORT).show();
+        }
+//          else if (binding.spinner.getSelectedItem().toString().trim().equals("Pick one")) {
+//                Toast.makeText(requireContext(), "Error", Toast.LENGTH_SHORT).show();
+//            }
+        else if (emailInputText.isEmpty()){
+            binding.editEmail.error = "This field is required"
+
+            return false
+        }
+        else if(!Patterns.EMAIL_ADDRESS.matcher(emailInputText).matches()){
+            binding.editEmail.error = "Invalid Email Address"
+
+            return false
+        }
+        else if(passwordText.isEmpty()) {
+            binding.editPassword.setError( "This field is required")
+            binding.editPassword.requestFocus()
+
+            return false
+
+        }
+        else if(passwordText.length < 8) {
+            binding.editPassword.error = "Minimum 8 Character Password"
+            binding.editPassword.requestFocus()
+            return false
+        }
+        else if(!passwordText.matches(".*[A-Z].*".toRegex())) {
+            binding.editPassword.error = "Must Contain 1 Upper-case Character"
+            binding.editPassword.requestFocus()
+            return false
+        }
+        else if(!passwordText.matches(".*[a-z].*".toRegex())) {
+            binding.editPassword.error = "Must Contain 1 Lower-case Character"
+            binding.editPassword.requestFocus()
+            return false
+        }
+        else if(!passwordText.matches(".*[@#\$%^&+=].*".toRegex())) {
+            binding.editPassword.error = "Must Contain 1 Special Character (@#\$%^&+=)"
+            binding.editPassword.requestFocus()
+            return false
+        }
+       else if (phoneInputText.isEmpty()){
+            binding.editPhone.error = "This field is required"
+            binding.editPhone.requestFocus()
+            return false
+        }
+        else if (!Patterns.PHONE.matcher(phoneInputText).matches()){
+            binding.editPhone.error = "Must be all Digits"
+            binding.editPhone.requestFocus()
+            return false
+        }
+        else if(phoneInputText.length != 10){
+            binding.editPhone.error = "Must be 10 Digits"
+            binding.editPhone.requestFocus()
+            return false
+        }
+
+        return true
+    }
+
+
 
     private fun setOnCheckedChangeListener() {
 
        var Donar =  binding.materialRadioButton
 
         if (Donar.isChecked){
-
+            validations()
             singUpUsers()
         }
         else
         {
+            validations()
             singUpUser()
         }
 
@@ -297,3 +392,7 @@ class RegistrationFragment : Fragment() {
     }
 
 }
+
+
+
+
